@@ -1,12 +1,13 @@
 import React from 'react'
 import { Navbar, Container, Nav} from 'react-bootstrap'
 import logo from "../assets/productivity_logo.jpg"
+import styles from "../styles/NavBar.module.css"
 
 
 const NavBar = () => {
   return ( 
     <Container>
-        <Navbar expand="md" fixed="top">
+        <Navbar className={styles.NavBar} expand="md" fixed="top">
             <Navbar.Brand> <img src={logo} alt="logo" height="45" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
