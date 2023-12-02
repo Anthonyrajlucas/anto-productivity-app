@@ -2,11 +2,12 @@ import React from 'react'
 import {Card} from 'react-bootstrap'
 
 
+
 const HomePage = () => {
   return (
     <>
   <Card>
-    <Card.Img variant="top" src="" />
+    <Card.Img variant="top" src="../" />
     <Card.Body>
       <Card.Text>
         Some quick example text to build on the card title and make up the bulk
