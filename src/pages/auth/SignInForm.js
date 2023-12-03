@@ -1,5 +1,11 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import { Link } from "react-router-dom";
+import appStyles from "../../App.module.css";
+
+
+
+
 const SignInForm = () => {
   return (
     <Form>
@@ -21,6 +27,10 @@ const SignInForm = () => {
   <Button variant="primary" type="submit">
     Submit
   </Button>
+  <p>Dont have an account?</p>
+<Link to="/signup">
+  <p>Click <span className={appStyles.DarkText}>here </span>to Sign up!</p>
+</Link>
 </Form>
   )
 }
