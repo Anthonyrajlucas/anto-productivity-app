@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <>
   <Card>
-  <img src='../assets/landing_page.jpg' alt='landingimage' />
+  <Card.Img src=""/>
     <Card.Body>
       <Card.Text>
       <h1>Welcome to Anto-Productivity-App
