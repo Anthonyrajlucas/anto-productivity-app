@@ -8,6 +8,21 @@ import SignInForm from "./pages/auth/SignInForm";
 import "./api/axiosDefaults";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleMount = async () => {
+    try {
+      const { data } = await axios.get("dj-rest-auth/user/");
+      setCurrentUser(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    handleMount();
+  }, []);
+  
   return (
     <div className={styles.App}>
       <NavBar />
