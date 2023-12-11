@@ -36,7 +36,9 @@ function SignInForm() {
       setCurrentUser(data.user);
       history.push("/");
     } catch (err) {
-      setErrors(err.response?.data);
+      console.error("Axios Error", err)
+      console.error("Response Data", err.response?.data)
+      setErrors(err.response?.data || {});
     }
   };
 
