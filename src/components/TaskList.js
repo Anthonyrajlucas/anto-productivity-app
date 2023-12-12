@@ -15,10 +15,11 @@ const TaskList = () => {
 
   useEffect(() =>{
     // Fetch tasks using axios
+
     const fetchData = async () => {
       try {
         const response = await axios.get("/tasks");
-        setTasks(response.data);
+        setTasks(response.data.results || []);
       } catch (err) {
         console.error("Axios Error", err);
         console.error("Response Data", err.response?.data);
@@ -27,6 +28,7 @@ const TaskList = () => {
     };
     fetchData();
   }, []);
+
 
   const handleEditClick = (task) => {
     if (task) {
@@ -45,15 +47,16 @@ const TaskList = () => {
   return (
     <Box textAlign="center" bgcolor="lightblue" p={5} borderRadius={2}>
       <h2>Task List</h2>
-      {tasks.map((task) => (
-        <TaskCard
-          key={task.id}
-          Title={task.title}
-          Task={task}
-          onEditClick={() => handleEditClick(task)}
-          onDeleteClick={handleDeleteClick}
-        />
-      ))}
+      {Array.isArray(tasks) && tasks.map((task) => (
+  task && task.id ? (
+    <TaskCard
+      key={task.id}
+      task={task}
+      onEditClick={() => handleEditClick(task)}
+      onDeleteClick={handleDeleteClick}
+    />
+  ) : null
+))}
     </Box>
 );
 };
