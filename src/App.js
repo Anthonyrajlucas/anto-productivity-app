@@ -6,6 +6,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import "./api/axiosDefaults";
 import TaskList from "./components/TaskList";
+import EditTaskModal from "./components/EditTaskModal";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/signin" render={() => <SignInForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
         <Route exact path="/tasklist" render={() => <TaskList/>} />
+        <Route exact path="/tasks/create" render={() => <EditTaskModal />} />
         <Route render={() => <p>Page not found!</p>} />
       </Switch>
     </Container>
