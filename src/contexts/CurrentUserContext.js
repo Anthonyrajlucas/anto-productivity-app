@@ -68,6 +68,7 @@ export const CurrentUserProvider = ({ children }) => {
     );
   }, [history]);
 
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <SetCurrentUserContext.Provider value={setCurrentUser}>

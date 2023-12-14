@@ -24,21 +24,21 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = (
+  const addTaskIcon = (
     <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
-      to="/posts/create"
+      to="/tasks/create"
     >
-      <i className="far fa-plus-square"></i>Add post
+      <div className={styles.NavLink}>
+        <i className="far fa-plus-square"></i>
+        <div className={styles.NavLink}>Add task</div>
+      </div>
     </NavLink>
   );
-
   
   const loggedInIcons = (
     <>
-    
-      
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
@@ -46,7 +46,20 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-       
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/task"
+      >
+        <i className="fas fa-list-check"></i>Task
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/tasklist"
+      >
+        <i className="fas fa-list-check"></i>TaskList
       </NavLink>
     </>
   );
@@ -67,20 +80,7 @@ const NavBar = () => {
       >
         <i className="fas fa-user-plus"></i>Sign up
       </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/task"
-      >
-        <i className="fas fa-list-check"></i>Task
-      </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/tasklist"
-      >
-        <i className="fas fa-list-check"></i>TaskList
-      </NavLink>
+
     </>
   );
 
@@ -92,7 +92,7 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        {currentUser && addPostIcon}
+        {currentUser && addTaskIcon}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
