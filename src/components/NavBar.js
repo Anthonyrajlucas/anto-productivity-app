@@ -9,6 +9,7 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
+import Avatar from "./Avatar";
 
 
 const NavBar = () => {
@@ -39,14 +40,6 @@ const NavBar = () => {
   
   const loggedInIcons = (
     <>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
-      </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
-      >
-      </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -61,6 +54,16 @@ const NavBar = () => {
       >
         <i className="fas fa-list-check"></i>TaskList
       </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i className="fas fa-sign-out-alt"></i>Sign out
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+      </NavLink>
+     
     </>
   );
 
