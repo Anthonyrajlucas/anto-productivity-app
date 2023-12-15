@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import { Card, CardContent, CardActions, Button, Typography } from '@mui/material';
+import { Card, CardContent, Button, Typography } from '@mui/material';
 
 const TaskCard = ({ task, onEditClick, onDeleteClick }) => {
   return (

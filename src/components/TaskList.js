@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TaskCard from './TaskCard';
-import EditTaskModal from './EditTaskModal';
+import EditTaskModal from "./pages/tasks/EditTaskModal";
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 import { Box } from '@mui/material';
 
