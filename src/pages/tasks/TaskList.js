@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TaskCard from './TaskCard';
-import EditTaskModal from "./pages/tasks/EditTaskModal";
-import ConfirmDeleteDialog from './ConfirmDeleteDialog';
+import EditTaskModal from "./EditTaskModal";
+import ConfirmDeleteDialog from '../../components/ConfirmDeleteDialog';
 import { Box } from '@mui/material';
 
 const TaskList = () => {

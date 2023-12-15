@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
   CardContent,
@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 
 const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => {
+
   return (
     <Modal open={open} onClose={onClose}>
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
