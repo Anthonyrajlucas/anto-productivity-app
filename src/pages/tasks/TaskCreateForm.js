@@ -4,8 +4,6 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Upload from "../../assets/upload.png";
-import Asset from "../../components/Asset";
 import styles from "../../styles/EditTaskModal.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -17,7 +15,6 @@ function TaskCreateForm() {
     title: "",
     description: "",
     due_date: "",
-    file_attachment: "",
     priority: "",
     category: "",
     state: "",
@@ -54,7 +51,6 @@ function TaskCreateForm() {
   const {  title,
            description,
            due_date,
-           file_attachment,
            priority,
            category,
            state } = task;
@@ -66,16 +62,14 @@ function TaskCreateForm() {
       });
   };
 
-  const handleChangeFile = (event) => {
-    if (event.target.files.length) {
-        URL.revokeObjectURL(file_attachment);
-        setTask({
-          ...task,
-          file_attachment: URL.createObjectURL(event.target.files[0]),
-        });
-      }
+  const handleDropdownChange = (event, dropdownType) => {
+    const selectedId = event.target.value;
+    setTask({
+      ...task,
+      [dropdownType]: selectedId,
+    });
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
   try {
@@ -87,7 +81,6 @@ function TaskCreateForm() {
       title: "",
       description: "",
       due_date: "",
-      file_attachment: "",
       priority: "",
       category: "",
       state: "",
@@ -132,11 +125,11 @@ function TaskCreateForm() {
           as="select"
           name="priority"
           value={priority}
-          onChange={handleChange}
+          onChange={(event) => handleDropdownChange(event, 'priority')}
         >
           <option value="">Select Priority</option>
           {dropdownData.priorities.map((priorityOption) => (
-            <option key={priorityOption.id} value={priorityOption.name}>
+            <option key={priorityOption.id} value={priorityOption.id}>
               {priorityOption.name}
             </option>
           ))}
@@ -148,11 +141,11 @@ function TaskCreateForm() {
           as="select"
           name="category"
           value={category}
-          onChange={handleChange}
+          onChange={(event) => handleDropdownChange(event, 'category')}
         >
           <option value="">Select Category</option>
           {dropdownData.categories.map((categoryOption) => (
-            <option key={categoryOption.id} value={categoryOption.name}>
+            <option key={categoryOption.id} value={categoryOption.id}>
               {categoryOption.name}
             </option>
           ))}
@@ -164,39 +157,16 @@ function TaskCreateForm() {
           as="select"
           name="state"
           value={state}
-          onChange={handleChange}
+          onChange={(event) => handleDropdownChange(event, 'state')}
         >
           <option value="">Select State</option>
           {dropdownData.states.map((stateOption) => (
-            <option key={stateOption.id} value={stateOption.name}>
+            <option key={stateOption.id} value={stateOption.id}>
               {stateOption.name}
             </option>
           ))}
         </Form.Control>
       </Form.Group>
-      <Form.Group className="text-center">
-              {task.file_attachment ? (
-                {/* ... (rest of your code) */}
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="file-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload a file"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="file-upload"
-                accept="file/*"
-                onChange={handleChangeFile}
-              />
-            </Form.Group>
-
-
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => {}}

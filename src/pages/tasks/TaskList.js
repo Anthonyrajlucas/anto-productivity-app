@@ -14,7 +14,6 @@ const TaskList = () => {
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 
   useEffect(() => {
-    // Fetch tasks using axios
     const fetchData = async () => {
       try {
         const response = await axios.get("/tasks");
@@ -42,8 +41,22 @@ const TaskList = () => {
     setDeleteConfirmation(true);
   };
 
-  const handleSaveEdit = () => {
-    // Implement save edit logic here
+  const handleSaveEdit = async (editedTask) => {
+    try {
+      console.log("Editing task:", editedTask);
+
+      const response = await axios.put(`/tasks/${editedTask.id}`, editedTask);
+      console.log("Task Updated:", response.data);
+  
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === editedTask.id ? response.data : task
+        )
+      );
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
   };
 
   const handleCloseModal = () => {

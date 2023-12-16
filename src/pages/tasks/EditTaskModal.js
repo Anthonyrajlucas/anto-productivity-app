@@ -11,6 +11,10 @@ import {
 
 const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => {
 
+  const handleSaveClick = () => {
+    onSaveEdit(editTask); 
+  };
+
   return (
     <Modal open={open} onClose={onClose}>
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -63,7 +67,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => 
             </form>
           </CardContent>
           <CardActions>
-            <Button onClick={onSaveEdit} style={{ backgroundColor: 'green', color: 'white' }}>
+            <Button onClick={handleSaveClick} style={{ backgroundColor: 'green', color: 'white' }}>
               Save
             </Button>
             <Button onClick={onClose} style={{ backgroundColor: 'red', color: 'white' }}>
