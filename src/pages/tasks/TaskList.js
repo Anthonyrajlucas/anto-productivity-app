@@ -63,19 +63,18 @@ const TaskList = () => {
     setIsModalOpen(false);
   };
 
-  const handleConfirmDelete = async (editedTask) => {
+  const handleConfirmDelete = async (deleteTask) => {
     try {
-      console.log("Editing task:", editedTask);
-
-      const response = await axios.delete(`/tasks/${editedTask.id}`, editedTask);
+      console.log("Deleting task:", deleteTask);
+      const response = await axios.delete(`/tasks/${deleteTask.id}`, deleteTask);
       console.log("Task Deleted:", response.data);
   
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
-          task.id === editedTask.id ? response.data : task
+          task.id === deleteTask.id ? response.data : task
         )
       );
-      setIsModalOpen(false);
+      setDeleteConfirmation(false);
     } catch (error) {
       console.error("Error deleting task:", error);
     }
