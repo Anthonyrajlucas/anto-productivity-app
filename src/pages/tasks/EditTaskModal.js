@@ -7,6 +7,12 @@ import {
   Typography,
   TextField,
   Modal,
+  Input,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Chip,
 } from '@mui/material';
 
 const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => {
@@ -63,6 +69,33 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => 
                 value={editTask?.state || ''}
                 fullWidth
                 onChange={(e) => setEditTask({ ...editTask, state: e.target.value })}
+              />
+              <FormControl fullWidth>
+                <InputLabel id="assigned-to-label">Assigned To</InputLabel>
+                <Select
+                  labelId="assigned-to-label"
+                  id="assigned-to"
+                  multiple
+                  value={editTask?.assigned.map(user => user) || []}
+                  onChange={(e) => setEditTask({ ...editTask, assigned: e.target.value })}
+                  renderValue={(selected) => (
+                    <div>
+                      {selected.map((value) => (
+                        <Chip key={value} label={`User ${value}`} style={{ margin: '2px' }} />
+                      ))}
+                    </div>
+                  )}
+                >
+{editTask?.assigned && editTask?.assigned.map((user) => (
+      <MenuItem key={user} value={user}>
+        {user}
+      </MenuItem>
+    ))}
+                </Select>
+              </FormControl>
+              <Input
+                type="file"
+                onChange={(e) => setEditTask({ ...editTask, file_attachment: e.target.files[0] })}
               />
             </form>
           </CardContent>
