@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TaskCard from './TaskCard';
 import EditTaskModal from "./EditTaskModal";
-import ConfirmDeleteDialog from '../../components/ConfirmDeleteDialog';
+import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 import { Box } from '@mui/material';
 
 const TaskList = () => {
@@ -63,8 +63,22 @@ const TaskList = () => {
     setIsModalOpen(false);
   };
 
-  const handleConfirmDelete = () => {
-    // Implement confirm delete logic here
+  const handleConfirmDelete = async (editedTask) => {
+    try {
+      console.log("Editing task:", editedTask);
+
+      const response = await axios.delete(`/tasks/${editedTask.id}`, editedTask);
+      console.log("Task Deleted:", response.data);
+  
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === editedTask.id ? response.data : task
+        )
+      );
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   const handleCancelDelete = () => {
@@ -80,7 +94,7 @@ const TaskList = () => {
             key={task.id}
             task={task}
             onEditClick={() => handleEditClick(task)}
-            onDeleteClick={handleDeleteClick}
+            onDeleteClick={() => handleDeleteClick(task)}
           />
         ) : null
       ))}

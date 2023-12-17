@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -11,7 +12,8 @@ import axios from 'axios';
 import { axiosReq } from "../../api/axiosDefaults";
 
 function TaskCreateForm() {
-
+  const [errors, setErrors] = useState({});
+  const history = useHistory();
   const [task, setTask] = useState({
     title: "",
     description: "",
@@ -21,12 +23,18 @@ function TaskCreateForm() {
     state: "",
   });
 
+  const {  title,
+    description,
+    due_date,
+    priority,
+    category,
+    state } = task;
+
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
     categories: [],
     states: [],
   });
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,12 +58,7 @@ function TaskCreateForm() {
     fetchData();
   }, []);
 
-  const {  title,
-           description,
-           due_date,
-           priority,
-           category,
-           state } = task;
+
 
   const handleChange = (event) => {
     setTask({
@@ -72,22 +75,25 @@ function TaskCreateForm() {
     });
   };
   
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("due_date", due_date);
+    formData.append("priority", priority);
+    formData.append("category", category);
+    formData.append("state", state);
   try {
-    const response = await axiosReq.post("/tasks/", task);
-    console.log("New Task Created:", response.data);
-    setTask({
-      title: "",
-      description: "",
-      due_date: "",
-      priority: "",
-      category: "",
-      state: "",
-    });
+    const { data } = await axiosReq.post("/tasks/", formData);
+    history.push(`/tasks/${data.id}`);
+    console.log("New Task Created:", data);
   } catch (error) {
-    console.error("Error creating task:", error);
-  
+    console.log(error);
+      if (error.response?.status !== 401) {
+        setErrors(error.response?.data);
+      }
   } 
   };
 

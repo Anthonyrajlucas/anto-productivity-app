@@ -7,7 +7,13 @@ import {
   DialogActions,
 } from '@mui/material';
 
+
 const ConfirmDeleteDialog = ({ open, onClose, onConfirmDelete, task }) => {
+
+  const handleConfirmDelete = () => {
+    onConfirmDelete(task); 
+  };
+  
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogTitle>Confirm Delete</DialogTitle>
@@ -18,7 +24,7 @@ const ConfirmDeleteDialog = ({ open, onClose, onConfirmDelete, task }) => {
           <Button onClick={onClose} style={{ backgroundColor: 'red', color: 'white' }}>
             Cancel
           </Button>
-          <Button onClick={() => onConfirmDelete(task)} style={{ backgroundColor: 'green', color: 'white' }}>
+          <Button onClick={handleConfirmDelete} style={{ backgroundColor: 'green', color: 'white' }}>
             Confirm
           </Button>
         </DialogActions>
