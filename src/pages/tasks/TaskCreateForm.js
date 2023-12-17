@@ -8,6 +8,7 @@ import styles from "../../styles/EditTaskModal.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from 'axios';
+import { axiosReq } from "../../api/axiosDefaults";
 
 function TaskCreateForm() {
 
@@ -25,6 +26,7 @@ function TaskCreateForm() {
     categories: [],
     states: [],
   });
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,10 +75,8 @@ function TaskCreateForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
   try {
-    // Make a POST request to create a new task
-    const response = await axios.post("/tasks", task);
+    const response = await axiosReq.post("/tasks/", task);
     console.log("New Task Created:", response.data);
-    setTask((prevTasks) => [...prevTasks, response.data]); 
     setTask({
       title: "",
       description: "",
@@ -87,7 +87,8 @@ function TaskCreateForm() {
     });
   } catch (error) {
     console.error("Error creating task:", error);
-  }
+  
+  } 
   };
 
   const textFields = (
