@@ -1,12 +1,16 @@
 import React, { } from 'react';
 import { Card, CardContent, Button, Typography,  Chip } from '@mui/material';
 
-const TaskCard = ({ task, onEditClick, onDeleteClick , priorities,categories, states}) => {
+const TaskCard = ({ task, onEditClick, onDeleteClick , priorities,categories, states, profiles}) => {
   const getDropdownItemName = (id, dropdownItems) => {
     const item = dropdownItems.find((item) => item.id === id);
     return item ? item.name : '';
   };
-  
+  const getDropdownUserName = (id, dropdownItems) => {
+    const item = dropdownItems.find((item) => item.id === id);
+    return item ? item.owner : '';
+  };
+
   return (
     <Card>
       <CardContent>
@@ -21,7 +25,7 @@ const TaskCard = ({ task, onEditClick, onDeleteClick , priorities,categories, st
         <Typography variant="body2">Is Overdue: {task.is_overdue.toString()}</Typography>
         <Typography variant="body2">Assigned To:
           {task.assigned.map(user => (
-            <Chip key={user.id} label={user} style={{ margin: '2px' }} />
+            <Chip key={getDropdownUserName(user, profiles)}label={user} style={{ margin: '2px' }} />
           ))}
         </Typography>
         <Button onClick={() => onEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>

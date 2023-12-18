@@ -15,7 +15,7 @@ import {
   Chip,
 } from '@mui/material';
 
-const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => {
+const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,states }) => {
 
   const handleSaveClick = () => {
     onSaveEdit(editTask); 
@@ -49,27 +49,52 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => 
                 fullWidth
                 onChange={(e) => setEditTask({ ...editTask, due_date: e.target.value })}
               />
-              <TextField
-                label="Priority"
-                variant="outlined"
-                value={editTask?.priority || ''}
-                fullWidth
-                onChange={(e) => setEditTask({ ...editTask, priority: e.target.value })}
-              />
-              <TextField
+              <FormControl fullWidth>
+                <InputLabel id="priority-label">Priority</InputLabel>
+               <Select
+                  labelId="priority-label"
+                  id="priority"
+                  value={editTask?.priority || ''}
+                  onChange={(e) => setEditTask({ ...editTask, priority: e.target.value })}
+                >
+                  {priorities.map((priority) => (
+                    <MenuItem key={priority.id} value={priority.id}>
+                      {priority.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+                </FormControl>
+                <FormControl fullWidth>
+                <InputLabel id="category-label">Category</InputLabel>
+                <Select
                 label="Category"
-                variant="outlined"
+                labelId="category-label"
+                id="category"
                 value={editTask?.category || ''}
-                fullWidth
                 onChange={(e) => setEditTask({ ...editTask, category: e.target.value })}
-              />
-              <TextField
-                label="State"
-                variant="outlined"
-                value={editTask?.state || ''}
-                fullWidth
-                onChange={(e) => setEditTask({ ...editTask, state: e.target.value })}
-              />
+              >
+                {categories.map((category) => (
+                  <MenuItem key={category.id} value={category.id}>
+                    {category.name}
+                  </MenuItem>
+                ))}
+              </Select>
+              </FormControl>
+              <FormControl fullWidth>
+                <InputLabel id="state-label">State</InputLabel>
+              <Select
+              labelId="state-label"
+              id="state"
+              value={editTask?.state || ''}
+              onChange={(e) => setEditTask({ ...editTask, state: e.target.value })}
+            >
+              {states.map((state) => (
+                <MenuItem key={state.id} value={state.id}>
+                  {state.name}
+                </MenuItem>
+              ))}
+            </Select>
+            </FormControl>
               <FormControl fullWidth>
                 <InputLabel id="assigned-to-label">Assigned To</InputLabel>
                 <Select
@@ -86,11 +111,11 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => 
                     </div>
                   )}
                 >
-{editTask?.assigned && editTask?.assigned.map((user) => (
-      <MenuItem key={user} value={user}>
-        {user}
-      </MenuItem>
-    ))}
+               {editTask?.assigned && editTask?.assigned.map((user) => (
+               <MenuItem key={user} value={user}>
+               {user}
+               </MenuItem>
+                ))}
                 </Select>
               </FormControl>
             </form>

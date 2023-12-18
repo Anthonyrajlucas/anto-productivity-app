@@ -11,6 +11,7 @@ const TaskList = () => {
     priorities: [],
     categories: [],
     states: [],
+    profiles: [],
   });
   const [errors, setErrors] = useState({});
   const [editTask, setEditTask] = useState(null);
@@ -35,16 +36,18 @@ const TaskList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [prioritiesResponse, categoriesResponse, statesResponse] = await Promise.all([
+        const [prioritiesResponse, categoriesResponse, statesResponse, profilesResponse] = await Promise.all([
           axios.get("/priorities"),
           axios.get("/categories"),
           axios.get("/states"),
+          axios.get("/profiles"),
         ]);
 
         setDropdownData({
           priorities: prioritiesResponse.data || [],
           categories: categoriesResponse.data || [],
           states: statesResponse.data || [],
+          profiles: profilesResponse.data || [],
         });
       } catch (err) {
         console.error("Axios Error", err);
@@ -122,6 +125,7 @@ const TaskList = () => {
             priorities={dropdownData.priorities}
             categories={dropdownData.categories}
             states={dropdownData.states}
+            profiles={dropdownData.profiles}
             onEditClick={() => handleEditClick(task)}
             onDeleteClick={() => handleDeleteClick(task)}
           />
@@ -131,6 +135,9 @@ const TaskList = () => {
         open={isModalOpen}
         onClose={handleCloseModal}
         editTask={editTask}
+        priorities={dropdownData.priorities}
+        categories={dropdownData.categories}
+        states={dropdownData.states}
         onSaveEdit={handleSaveEdit}
         setEditTask={setEditTask}
       />
