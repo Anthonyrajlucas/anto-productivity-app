@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import styles from "../../styles/EditTaskModal.module.css";
+import {  Form, Button, Col, Modal } from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from 'axios';
-import { axiosReq } from "../../api/axiosDefaults";
-import {
-  useCurrentUser
-} from "../../contexts/CurrentUserContext";
+
 
 function TaskCreateForm() {
-  const currentUser = useCurrentUser();
-
+  const [users, setUsers] = useState([]);
   const [errors, setErrors] = useState({});
+  const [showModal, setShowModal] = useState(false);  
+
   const history = useHistory();
   const [task, setTask] = useState({
     title: "",
@@ -26,7 +19,6 @@ function TaskCreateForm() {
     priority: "",
     category: "",
     state: "",
-    owner: "",
   });
 
   const {  title,
@@ -34,8 +26,7 @@ function TaskCreateForm() {
     due_date,
     priority,
     category,
-    state,
-    owner } = task;
+    state } = task;
 
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
@@ -43,6 +34,14 @@ function TaskCreateForm() {
     states: [],
   });
 
+ 
+  useEffect(() => {
+    axios
+      .get("/profiles/")
+      .then((response) => setUsers(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,8 +64,6 @@ function TaskCreateForm() {
     fetchData();
   }, []);
 
-
-
   const handleChange = (event) => {
     setTask({
         ...task,
@@ -85,7 +82,7 @@ function TaskCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const ownerId = currentUser;
+  
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -93,10 +90,10 @@ function TaskCreateForm() {
     formData.append("priority", priority);
     formData.append("category", category);
     formData.append("state", state);
-    formData.append("owner", ownerId);
   try {
-    const { data } = await axiosReq.post("/tasks/", formData);
+    const { data } = await axios.post("/tasks/", formData);
     history.push(`/tasks/${data.id}`);
+    setShowModal(true);
     console.log("New Task Created:", data);
   } catch (error) {
     console.log(error);
@@ -104,6 +101,11 @@ function TaskCreateForm() {
         setErrors(error.response?.data);
       }
   } 
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    history.push(`/tasks/`);  
   };
 
   const textFields = (
@@ -183,32 +185,49 @@ function TaskCreateForm() {
           ))}
         </Form.Control>
       </Form.Group>
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
-      >
-        cancel
-      </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
+      </Button>
+      <Button
+        className={`${btnStyles.Button}`}
+        onClick={() => history.goBack()}
+      >
+        Cancel
       </Button>
     </div>
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+<Form onSubmit={handleSubmit}>
+      {showModal && (
+        <Modal show={showModal} onHide={handleCloseModal} centered={true}>
+          <Modal.Header closeButton>
+            <Modal.Title>Success</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Task created successfully!
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
+      <div className={appStyles.CenterAlignForm}>
+        <Col md={7} lg={8}>
+          <div
+            className={`${appStyles.Content} ${appStyles.TextAlignCenter} d-flex flex-column justify-content-center`}
           >
-          {textFields}
-          </Container>
+            <h3>Create Task</h3>
+            <div className={appStyles.Content}>
+              {textFields}
+            </div>
+          </div>
         </Col>
-
-      </Row>
+      </div>
     </Form>
-  );
+     );
 }
 
 export default TaskCreateForm;

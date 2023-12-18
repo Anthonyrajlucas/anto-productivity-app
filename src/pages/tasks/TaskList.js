@@ -7,6 +7,11 @@ import { Box } from '@mui/material';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
+  const [dropdownData, setDropdownData] = useState({
+    priorities: [],
+    categories: [],
+    states: [],
+  });
   const [errors, setErrors] = useState({});
   const [editTask, setEditTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +27,28 @@ const TaskList = () => {
         console.error("Axios Error", err);
         console.error("Response Data", err.response?.data);
         setErrors(err.response?.data || {});
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [prioritiesResponse, categoriesResponse, statesResponse] = await Promise.all([
+          axios.get("/priorities"),
+          axios.get("/categories"),
+          axios.get("/states"),
+        ]);
+
+        setDropdownData({
+          priorities: prioritiesResponse.data || [],
+          categories: categoriesResponse.data || [],
+          states: statesResponse.data || [],
+        });
+      } catch (err) {
+        console.error("Axios Error", err);
+        console.error("Response Data", err.response?.data);
       }
     };
     fetchData();
@@ -92,6 +119,9 @@ const TaskList = () => {
           <TaskCard
             key={task.id}
             task={task}
+            priorities={dropdownData.priorities}
+            categories={dropdownData.categories}
+            states={dropdownData.states}
             onEditClick={() => handleEditClick(task)}
             onDeleteClick={() => handleDeleteClick(task)}
           />
