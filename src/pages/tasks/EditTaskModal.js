@@ -77,7 +77,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => 
                   id="assigned-to"
                   multiple
                   value={editTask?.assigned.map(user => user) || []}
-                  onChange={(e) => setEditTask({ ...editTask, assigned: e.target.value })}
+                  onChange={(e) => setEditTask({ ...editTask, assigned: e.target.value.map(user => user) })}
                   renderValue={(selected) => (
                     <div>
                       {selected.map((value) => (
@@ -93,10 +93,6 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask }) => 
     ))}
                 </Select>
               </FormControl>
-              <Input
-                type="file"
-                onChange={(e) => setEditTask({ ...editTask, file_attachment: e.target.files[0] })}
-              />
             </form>
           </CardContent>
           <CardActions>

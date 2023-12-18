@@ -45,7 +45,7 @@ const TaskList = () => {
     try {
       console.log("Editing task:", editedTask);
 
-      const response = await axios.put(`/tasks/${editedTask.id}`, editedTask);
+      const response = await axios.put(`/tasks/${editedTask.id}/`, editedTask);
       console.log("Task Updated:", response.data);
   
       setTasks((prevTasks) =>

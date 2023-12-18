@@ -19,12 +19,6 @@ const TaskCard = ({ task, onEditClick, onDeleteClick }) => {
             <Chip key={user.id} label={user} style={{ margin: '2px' }} />
           ))}
         </Typography>
-        {task.file_attachment && (
-          <Typography variant="body2">
-            File Attachment: <a href={task.file_attachment} target="_blank" rel="noopener noreferrer">View Attachment</a>
-          </Typography>
-        )}
-
         <Button onClick={() => onEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
           Edit</Button>
         <Button onClick={() => onDeleteClick(task)} style={{ backgroundColor: 'red', color: 'white' }}>
