@@ -66,6 +66,10 @@ const TaskList = () => {
     }
   };
 
+  const handleAssignToMe = (task) => {
+   
+  };
+
   const handleDeleteClick = (task) => {
     setDeleteTask(task);
     setDeleteConfirmation(true);
@@ -128,6 +132,7 @@ const TaskList = () => {
             profiles={dropdownData.profiles}
             onEditClick={() => handleEditClick(task)}
             onDeleteClick={() => handleDeleteClick(task)}
+            onAssignedToMeClick={() => handleAssignToMe(task)}
           />
         ) : null
       ))}

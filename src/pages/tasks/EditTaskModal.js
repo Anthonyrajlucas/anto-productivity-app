@@ -14,9 +14,6 @@ import {
   FormControl,
   Chip,
 } from '@mui/material';
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 
 const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,states }) => {
 
@@ -45,14 +42,17 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                 fullWidth
                 onChange={(e) => setEditTask({ ...editTask, description: e.target.value })}
               />
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DesktopDatePicker
-                  label="Due Date"
-                  value={editTask?.due_date || null}
-                  onChange={(newValue) => setEditTask({ ...editTask, due_date: newValue })}
-                  renderInput={(params) => <TextField {...params} variant="outlined" />}
-                />
-              </LocalizationProvider>
+              <TextField
+                label="Due Date"
+                variant="outlined"
+                value={editTask?.due_date || ''}
+
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={(e) => setEditTask({ ...editTask, due_date: e.target.value })}
+              />
               <FormControl fullWidth>
                 <InputLabel id="priority-label">Priority</InputLabel>
                <Select
