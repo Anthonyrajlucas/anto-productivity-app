@@ -10,8 +10,13 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from 'axios';
 import { axiosReq } from "../../api/axiosDefaults";
+import {
+  useCurrentUser
+} from "../../contexts/CurrentUserContext";
 
 function TaskCreateForm() {
+  const currentUser = useCurrentUser();
+
   const [errors, setErrors] = useState({});
   const history = useHistory();
   const [task, setTask] = useState({
@@ -21,6 +26,7 @@ function TaskCreateForm() {
     priority: "",
     category: "",
     state: "",
+    owner: "",
   });
 
   const {  title,
@@ -28,7 +34,8 @@ function TaskCreateForm() {
     due_date,
     priority,
     category,
-    state } = task;
+    state,
+    owner } = task;
 
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
@@ -78,6 +85,7 @@ function TaskCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const ownerId = currentUser;
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -85,6 +93,7 @@ function TaskCreateForm() {
     formData.append("priority", priority);
     formData.append("category", category);
     formData.append("state", state);
+    formData.append("owner", ownerId);
   try {
     const { data } = await axiosReq.post("/tasks/", formData);
     history.push(`/tasks/${data.id}`);
