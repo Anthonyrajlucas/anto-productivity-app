@@ -3,9 +3,12 @@ import axios from 'axios';
 import TaskCard from './TaskCard';
 import EditTaskModal from "./EditTaskModal";
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
-import { Box } from '@mui/material';
+import { Box, Button, FormControl, Input,  Typography } from '@mui/material';
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import TaskListStyle from "../../styles/TaskList.module.css";
 
-const TaskList = () => {
+function TaskList( { message, filter = "" }) {
   const [tasks, setTasks] = useState([]);
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
@@ -18,6 +21,10 @@ const TaskList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteTask, setDeleteTask] = useState(null);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+  const [query, setQuery] = useState("");
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const { pathname } = useLocation();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +39,28 @@ const TaskList = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const { data } = await axios.get(`/tasks/?${filter}search=${query}`);
+        setTasks(data.results || []);
+        setHasLoaded(true);
+      } catch (err) {
+       console.error("Axios Error", err);
+       console.error("Response Data", err.response?.data);
+      }
+    };
+
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      fetchTasks();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, query, pathname]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,8 +148,31 @@ const TaskList = () => {
   };
 
   return (
-    <Box textAlign="center" bgcolor="lightblue" p={5} borderRadius={2}>
-      <h2>Task List</h2>
+    <Box className={TaskListStyle.taskListRoot}>
+      <FormControl onSubmit={(event) => event.preventDefault()}>
+        <Input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          className={TaskListStyle.searchInput}
+          type="text"
+          placeholder="Search tasks"
+          aria-label="Search bar"
+        />
+      </FormControl>
+      <div>
+        <Button
+          as={Link}
+          to="/tasks/create"
+          variant="contained"
+          color="secondary"
+          className={TaskListStyle.createButton}
+        >
+          Create Task
+        </Button>
+      </div>
+      <Typography variant="h4" className={TaskListStyle.taskListTitle}>
+        Task List
+      </Typography>
       {Array.isArray(tasks) && tasks.map((task) => (
         task && task.id ? (
           <TaskCard

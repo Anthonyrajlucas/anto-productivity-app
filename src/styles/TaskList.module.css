@@ -1,0 +1,21 @@
+/* TaskList.module.css */
+
+.taskListRoot {
+    text-align: center;
+    background-color: lightblue;
+    padding: 32px;
+    border-radius: 8px;
+  }
+  
+  .searchInput {
+    margin-right: 16px;
+  }
+  
+  .createButton {
+    margin-top: 16px;
+  }
+  
+  .taskListTitle {
+    margin-bottom: 16px;
+  }
+  
