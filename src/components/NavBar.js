@@ -3,7 +3,6 @@ import logo from "../assets/productivity_logo.jpg";
 import React from "react";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -15,7 +14,6 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const history = useHistory();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
@@ -114,8 +112,8 @@ const NavBar = () => {
             >
               <i className="fas fa-home"></i>Home
             </NavLink>
-
-            {currentUser ? loggedInIcons : loggedOutIcons}
+            {loggedInIcons}
+//            {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>

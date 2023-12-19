@@ -40,26 +40,26 @@ function TaskList( { message, filter = "" }) {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const { data } = await axios.get(`/tasks/?${filter}search=${query}`);
-        setTasks(data.results || []);
-        setHasLoaded(true);
-      } catch (err) {
-       console.error("Axios Error", err);
-       console.error("Response Data", err.response?.data);
-      }
-    };
+//  useEffect(() => {
+//    const fetchTasks = async () => {
+//      try {
+//        const { data } = await axios.get(`/tasks/?${filter}search=${query}`);
+//        setTasks(data.results || []);
+//        setHasLoaded(true);
+//      } catch (err) {
+//       console.error("Axios Error", err);
+//       console.error("Response Data", err.response?.data);
+//      }
+//    };
 
-    setHasLoaded(false);
-    const timer = setTimeout(() => {
-      fetchTasks();
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [filter, query, pathname]);
+//    setHasLoaded(false);
+//    const timer = setTimeout(() => {
+//      fetchTasks();
+//    }, 1000);
+//    return () => {
+//      clearTimeout(timer);
+//    };
+//  }, [filter, query, pathname]);
 
 
   useEffect(() => {
