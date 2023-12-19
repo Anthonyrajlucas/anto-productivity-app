@@ -95,8 +95,20 @@ function TaskList( { message, filter = "" }) {
     }
   };
 
-  const handleAssignToMe = (task) => {
-   
+  const handleAssignToMe = async (task)  => {
+//    try {
+     
+//      const currentUser = currentUser.data;
+  
+//      const updatedTask = { ...task, assigned: [...task.assigned, currentUser.id] };
+
+//      const response = await axios.put(`/tasks/${task.id}/`, updatedTask);
+//      setTasks((prevTasks) =>
+//        prevTasks.map((t) => (t.id === task.id ? response.data : t))
+//      );
+//    } catch (error) {
+//      console.error("Error assigning task:", error);
+//    }
   };
 
   const handleDeleteClick = (task) => {
