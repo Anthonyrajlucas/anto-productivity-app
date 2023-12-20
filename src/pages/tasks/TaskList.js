@@ -192,6 +192,7 @@ function TaskList( { message, filter = "" }) {
           <TaskCard
             key={task.id}
             task={task}
+            isOwner={currentUser && currentUser.profile_id === task.profile_id}
             priorities={dropdownData.priorities}
             categories={dropdownData.categories}
             states={dropdownData.states}
