@@ -175,16 +175,16 @@ function TaskList( { message, filter = "" }) {
           }
         />
       </FormControl>
-
       <Link to="/tasksCreate" style={{ textDecoration: 'none' }}>
         <Button variant="contained" color="secondary">
           Create Task
         </Button>
       </Link>
+      
     </div>
     <div>
     <FormControl variant="outlined" className={TaskListStyle.dropdownFormControl}>
-        <InputLabel>Category</InputLabel>
+    <InputLabel id="category-label">Category</InputLabel>
         <Select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
