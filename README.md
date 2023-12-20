@@ -51,3 +51,24 @@ Developer: Anthony Raj
       3. [Literature](#literature)
       4. [Misc](#misc)
   15. [Acknowledgements](#acknowledgements)
+
+  ## About
+
+The Anto-Productivity-App It web app has been developed to provide user's the chance to create, Edit, Delete, Assign to others and carry out tasks online.
+
+## Project Goals
+
+The goal for this project was to build a productivity platform in which users can create tasks where other users who feel they can help, can carry out the work as described in the task detail. Tasks can be assigned to members and packs can also be created to group tasks together.
+
+
+The key functionality aspects:
+
+- The site to be simple and use intuitive navigation across all pages
+- User authentication
+- User interaction via tasks, comments and packs
+- User's to have their own profiles with brief description, profile image and tab group consisting of their owned tasks, packs and other users tasks which they have been assigned
+- CRUD functionality for task, comments, packs and their profile
+- Tasks filtering by keyword search, new tasks and high priority tasks
+- Responsiveness to allow pleasant usage of the app across a range of devices with varying display sizes
+
+
