@@ -7,8 +7,14 @@ import { Box, Button, FormControl, Input,  Typography } from '@mui/material';
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import TaskListStyle from "../../styles/TaskList.module.css";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext";
 
 function TaskList( { message, filter = "" }) {
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
   const [tasks, setTasks] = useState([]);
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
@@ -94,19 +100,17 @@ function TaskList( { message, filter = "" }) {
   };
 
   const handleAssignToMe = async (task)  => {
-//    try {
-     
-//      const currentUser = currentUser.data;
-  
-//      const updatedTask = { ...task, assigned: [...task.assigned, currentUser.id] };
+    try {
 
-//      const response = await axios.put(`/tasks/${task.id}/`, updatedTask);
-//      setTasks((prevTasks) =>
-//        prevTasks.map((t) => (t.id === task.id ? response.data : t))
-//      );
-//    } catch (error) {
-//      console.error("Error assigning task:", error);
-//    }
+      const updatedTask = {  ...task, assigned_to: currentUser.profile_id };
+
+      const response = await axios.put(`/tasks/${task.id}/`, updatedTask);
+      setTasks((prevTasks) =>
+        prevTasks.map((t) => (t.id === task.id ? response.data : t))
+      );
+    } catch (error) {
+      console.error("Error assigning task:", error);
+    }
   };
 
   const handleDeleteClick = (task) => {
