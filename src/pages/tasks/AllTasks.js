@@ -10,7 +10,6 @@ import {
 } from "../../contexts/CurrentUserContext";
 
 
-
 function AllTasks( { message, filter = "" }) {
   const currentUser = useCurrentUser();
   const [tasks, setTasks] = useState([]);
