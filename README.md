@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Anto-Productivity-App
+Developer: Anthony Raj 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Mockup image]()
 
-## Available Scripts
+[View live website]()
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Table of Contents
+  1. [About](#about)
+  2. [Project Goals](#project-goals)
+  3. [User Experience](#user-experience)
+      1. [Target Audience](#target-audience)
+      2. [User Requirements and Expectations](#user-requirements-and-expectations)
+      3. [User Stories](#user-stories)
+      4. [Site Owner Stories](#site-owner-stories)
+  4. [Technical Design](#technical-design)
+      1. [Agile Design](#agile-design)
+      2. [CRUD Functionality](#crud-functionality)
+      3. [Colours](#colours)
+      4. [Fonts](#fonts)
+      5. [Wireframes](#wireframes)
+  5. [Technologies Used](#technologies-used)
+      1. [Coding Languages](#coding-languages)
+      2. [Frameworks and Tools](#frameworks-and-tools)
+      3. [Libraries](#libraries)
+  6. [Front-End](#front-end)
+      1. [React](#react)
+  7. [Back-End API](#back-end-api)
+      1. [Django REST Framework](#django-rest-framework)
+  8. [Features](#features)
+  9. [Future features / improvements](#future-features--improvements)
+  10. [Validation](#validation)
+      1. [HTML](#html-validation)
+      2. [CSS](#css-validation)
+      3. [ESLint JavaScript JSX Validation](#eslint-javascript-jsx-validation)
+      4. [Chrome Dev Tools Lighthouse](#chrome-dev-tools-lighthouse-validation)
+      5. [WAVE Validation](#wave-validation)
+  11. [Testing](#testing)
+      1. [Device Testing](#device-testing)
+      2. [Browser Compatibility](#browser-compatibility)
+      3. [Manual Testing](#manual-testing)
+  12. [Bugs](#bugs)
+  13. [Deployment](#deployment)
+      1. [Heroku](#heroku)
+      2. [Forking GitHub Repo](#forking-the-github-repository)
+      3. [Clone a GitHub Repo](#clone-a-github-repository)
+  14. [Credits](#credits)
+      1. [Tutorial](#tutorials)
+      2. [Code](#code)
+      3. [Literature](#literature)
+      4. [Misc](#misc)
+  15. [Acknowledgements](#acknowledgements)
