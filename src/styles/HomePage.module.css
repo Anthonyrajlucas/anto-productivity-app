@@ -1,0 +1,61 @@
+/* src/styles/Homepage.module.css */
+
+.HomepageBackground {
+    background-color: #f4f4f4; /* Light gray background */
+    min-height: 50vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically and horizontally */
+    
+  }
+  
+  .HomepageBoxPos {
+    width: 100%; /* Full width */
+    max-width: 600px; /* Maximum width of the content */
+    margin: auto; /* Center align the content */
+  }
+  
+  .HomepageCard {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add a subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+    background-color: white; /* Card background color */
+    padding: 20px; /* Padding inside the card */
+    margin-bottom: 30px; /* Space below the card */
+  }
+  
+  .Footer {
+    background-color: #5e76ef;
+    color: white;
+    text-align: center;
+    padding: 20px 0; /* Padding on top and bottom */
+    width: 100%;
+    position: relative; /* Adjusted to 'relative' */
+    margin-top: 30px; /* Space above the footer */
+  }
+  
+  .Footer a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.2em; /* Larger icons */
+    transition: color 0.3s;
+  }
+  
+  .Footer a:hover {
+    color: #e0e0e0; /* Lighter color on hover */
+  }
+  
+  .ContactInfo {
+    margin-bottom: 15px; /* Space below contact info */
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .HomepageBoxPos {
+      width: 95%; /* Slightly reduced width for mobile */
+    }
+  
+    .HomepageCard {
+      margin-bottom: 20px; /* Smaller space below the card on mobile */
+    }
+  }
+  
