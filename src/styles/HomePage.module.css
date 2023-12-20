@@ -2,11 +2,11 @@
 
 .HomepageBackground {
     background-color: #f4f4f4; /* Light gray background */
-    min-height: 50vh; /* Full viewport height */
+    min-height: calc(100vh - 81px); /* Adjusted height */
     display: flex;
     justify-content: center;
     align-items: center; /* Center content vertically and horizontally */
-    
+    padding: 30px 10px; /* Adjusted padding */
   }
   
   .HomepageBoxPos {
@@ -16,15 +16,28 @@
   }
   
   .HomepageCard {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add a subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    background-color: white; /* Card background color */
-    padding: 20px; /* Padding inside the card */
+    background-color: #ffffff; /* White background */
+    border: 1px solid #f0f1f9; /* Border style */
+    border-radius: 2px; /* Border radius */
+    color: #7177a1; /* Text color */
+    padding: 10px; /* Padding inside the card */
     margin-bottom: 30px; /* Space below the card */
+    box-shadow: none; /* No shadow */
+  }
+  
+  .CardTitle {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2142b2; /* Header color */
+    margin-bottom: 15px; /* Space below title */
   }
   
   .Footer {
-    background-color: #5e76ef;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 20px 0; /* Padding on top and bottom */
@@ -35,6 +48,7 @@
   
   .Footer a {
     color: white;
+    text-decoration: none; /* Removing underline */
     margin: 0 10px;
     font-size: 1.2em; /* Larger icons */
     transition: color 0.3s;
@@ -42,10 +56,6 @@
   
   .Footer a:hover {
     color: #e0e0e0; /* Lighter color on hover */
-  }
-  
-  .ContactInfo {
-    margin-bottom: 15px; /* Space below contact info */
   }
   
   /* Responsive adjustments for smaller screens */
