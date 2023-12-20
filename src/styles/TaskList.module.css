@@ -7,15 +7,22 @@
     border-radius: 8px;
   }
   
-  .searchInput {
-    margin-right: 16px;
-  }
-  
   .createButton {
     margin-top: 16px;
   }
   
   .taskListTitle {
     margin-bottom: 16px;
+  }
+
+  .searchFormControl {
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  .searchInput {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
   }
   

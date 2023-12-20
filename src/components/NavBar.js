@@ -11,11 +11,16 @@ import axios from "axios";
 import Avatar from "./Avatar";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
+ /*
+    Handles user logout and
+    redirects to the landing page
+  */ 
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
@@ -38,6 +43,10 @@ const NavBar = () => {
     </NavLink>
   );
   
+   /* 
+    Displays current username with its avatar in the navbar
+    and dropdown offers options only available to auth user
+  */ 
   const loggedInIcons = (
     <>
       <NavLink

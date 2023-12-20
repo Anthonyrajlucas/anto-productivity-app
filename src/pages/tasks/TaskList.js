@@ -3,7 +3,8 @@ import axios from 'axios';
 import TaskCard from './TaskCard';
 import EditTaskModal from "./EditTaskModal";
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
-import { Box, Button, FormControl, Input,  Typography } from '@mui/material';
+import { Box, Button, FormControl, Input, InputAdornment, Typography, Snackbar, Alert } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import TaskListStyle from "../../styles/TaskList.module.css";
@@ -14,7 +15,6 @@ import {
 
 function TaskList( { message, filter = "" }) {
   const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
   const [tasks, setTasks] = useState([]);
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
@@ -29,22 +29,9 @@ function TaskList( { message, filter = "" }) {
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
   const [query, setQuery] = useState("");
   const [hasLoaded, setHasLoaded] = useState(false);
-  const { pathname } = useLocation();
+  const [notification, setNotification] = useState({ open: false, message: '', type: '' });
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/tasks");
-        setTasks(response.data.results || []);
-      } catch (err) {
-        console.error("Axios Error", err);
-        console.error("Response Data", err.response?.data);
-        setErrors(err.response?.data || {});
-      }
-    };
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -64,7 +51,7 @@ function TaskList( { message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,9 +88,7 @@ function TaskList( { message, filter = "" }) {
 
   const handleAssignToMe = async (task)  => {
     try {
-
       const updatedTask = {  ...task, assigned_to: currentUser.profile_id };
-
       const response = await axios.put(`/tasks/${task.id}/`, updatedTask);
       setTasks((prevTasks) =>
         prevTasks.map((t) => (t.id === task.id ? response.data : t))
@@ -124,16 +109,24 @@ function TaskList( { message, filter = "" }) {
 
       const response = await axios.put(`/tasks/${editedTask.id}/`, editedTask);
       console.log("Task Updated:", response.data);
-  
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task.id === editedTask.id ? response.data : task
         )
       );
       setIsModalOpen(false);
+      setNotification({ open: true, message: 'Task updated successfully!', type: 'success' });
     } catch (error) {
       console.error("Error updating task:", error);
+      setNotification({ open: true, message: 'Error updating task!', type: 'error' });
     }
+  };
+
+  const handleCloseNotification = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setNotification({ ...notification, open: false });
   };
 
   const handleCloseModal = () => {
@@ -163,6 +156,22 @@ function TaskList( { message, filter = "" }) {
 
   return (
     <Box className={TaskListStyle.taskListRoot}>
+        {/* Search Bar Section */}
+        <FormControl variant="outlined" className={TaskListStyle.searchFormControl}>
+        <Input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          className={TaskListStyle.searchInput}
+          type="text"
+          placeholder="Search tasks"
+          aria-label="Search bar"
+          startAdornment={
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          }
+        />
+      </FormControl>
       <FormControl onSubmit={(event) => event.preventDefault()}>
         <Input
           value={query}
@@ -174,15 +183,15 @@ function TaskList( { message, filter = "" }) {
         />
       </FormControl>
       <div>
-        <Button
-          as={Link}
-          to="/tasks/create"
-          variant="contained"
-          color="secondary"
-          className={TaskListStyle.createButton}
-        >
-          Create Task
-        </Button>
+      <Link to="/tasksCreate" style={{ textDecoration: 'none' }}>
+  <Button
+    variant="contained"
+    color="secondary"
+    className={TaskListStyle.createButton}
+  >
+    Create Task
+  </Button>
+</Link>
       </div>
       <Typography variant="h4" className={TaskListStyle.taskListTitle}>
         Task List
@@ -219,6 +228,11 @@ function TaskList( { message, filter = "" }) {
         onConfirmDelete={handleConfirmDelete}
         task={deleteTask}
       />
+      <Snackbar open={notification.open} autoHideDuration={6000} onClose={handleCloseNotification}>
+  <Alert onClose={handleCloseNotification} severity={notification.type} sx={{ width: '100%' }}>
+    {notification.message}
+  </Alert>
+</Snackbar>
     </Box>
   );
 };
