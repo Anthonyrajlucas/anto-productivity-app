@@ -54,7 +54,14 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/tasklist"
       >
-        <i className="fas fa-list-check"></i>TaskList
+        <i className="fas fa-list-check"></i>My Task List
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/task"
+      >
+        <i className="fas fa-eye"></i>All Task
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
