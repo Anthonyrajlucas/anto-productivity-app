@@ -99,29 +99,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
               ))}
             </Select>
             </FormControl>
-              <FormControl fullWidth>
-                <InputLabel id="assigned-to-label">Assigned To</InputLabel>
-                <Select
-                  labelId="assigned-to-label"
-                  id="assigned-to"
-                  multiple
-                  value={editTask?.assigned.map(user => user) || []}
-                  onChange={(e) => setEditTask({ ...editTask, assigned: e.target.value.map(user => user) })}
-                  renderValue={(selected) => (
-                    <div>
-                      {selected.map((value) => (
-                        <Chip key={value} label={`User ${value}`} style={{ margin: '2px' }} />
-                      ))}
-                    </div>
-                  )}
-                >
-               {editTask?.assigned && editTask?.assigned.map((user) => (
-               <MenuItem key={user} value={user}>
-               {user}
-               </MenuItem>
-                ))}
-                </Select>
-              </FormControl>
+
             </form>
           </CardContent>
           <CardActions>

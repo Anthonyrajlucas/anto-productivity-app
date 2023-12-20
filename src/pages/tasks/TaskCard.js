@@ -21,16 +21,8 @@ const TaskCard = ({ task, onEditClick, onDeleteClick , onAssignedToMeClick , pri
         <Typography variant="body2">Category: {getDropdownItemName(task.category, categories)}</Typography>
         <Typography variant="body2">State: {getDropdownItemName(task.state, states)}</Typography>
         {/*       
-// <Typography variant="body2">Created At: {task.created_at}</Typography>
-// <Typography variant="body2">Updated At: {task.updated_at}</Typography>
 // <Typography variant="body2">Is Overdue: {task.is_overdue.toString()}</Typography>
          */}
-
-        <Typography variant="body2">Assigned To:
-          {task.assigned.map(user => (
-            <Chip key={getDropdownUserName(user, profiles)}label={user} style={{ margin: '2px' }} />
-          ))}
-        </Typography>
         <Button onClick={() => onEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
           Edit</Button>
         <Button onClick={() => onDeleteClick(task)} style={{ backgroundColor: 'red', color: 'white' }}>
