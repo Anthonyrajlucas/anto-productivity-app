@@ -25,4 +25,15 @@
     border-radius: 4px;
     padding: 10px 15px;
   }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .dropdownFormControl {
+    width: 200px; 
+  }
   

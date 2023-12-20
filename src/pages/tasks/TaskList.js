@@ -3,14 +3,13 @@ import axios from 'axios';
 import TaskCard from './TaskCard';
 import EditTaskModal from "./EditTaskModal";
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
-import { Box, Button, FormControl, Input, InputAdornment, Typography, Snackbar, Alert } from '@mui/material';
+import { Box, Button, FormControl, Input, InputAdornment, Typography, Snackbar, Alert ,InputLabel , 
+         Select, MenuItem } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import TaskListStyle from "../../styles/TaskList.module.css";
 import {
   useCurrentUser,
-  useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 
 function TaskList( { message, filter = "" }) {
@@ -22,36 +21,37 @@ function TaskList( { message, filter = "" }) {
     states: [],
     profiles: [],
   });
-  const [errors, setErrors] = useState({});
+
   const [editTask, setEditTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteTask, setDeleteTask] = useState(null);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
   const [query, setQuery] = useState("");
-  const [hasLoaded, setHasLoaded] = useState(false);
   const [notification, setNotification] = useState({ open: false, message: '', type: '' });
-
+  const [selectedCategory, setSelectedCategory] = useState('');
 
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axios.get(`/tasks/?${filter}search=${query}`);
+        let queryURL = `/tasks/?${filter}search=${query}`;
+        if (selectedCategory) {
+          queryURL += `&category=${selectedCategory}`; 
+        }
+        const { data } = await axios.get(queryURL);
         setTasks(data.results || []);
-        setHasLoaded(true);
       } catch (err) {
        console.error("Axios Error", err);
        console.error("Response Data", err.response?.data);
       }
     };
-    setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchTasks();
     }, 1000);
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query ]);
+  }, [filter, query , selectedCategory ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -156,8 +156,11 @@ function TaskList( { message, filter = "" }) {
 
   return (
     <Box className={TaskListStyle.taskListRoot}>
-        {/* Search Bar Section */}
-        <FormControl variant="outlined" className={TaskListStyle.searchFormControl}>
+    <Typography variant="h4" className={TaskListStyle.taskListTitle}>
+      Task List
+    </Typography>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <FormControl variant="outlined" className={TaskListStyle.searchFormControl}>
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
@@ -172,30 +175,32 @@ function TaskList( { message, filter = "" }) {
           }
         />
       </FormControl>
-      <FormControl onSubmit={(event) => event.preventDefault()}>
-        <Input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          className={TaskListStyle.searchInput}
-          type="text"
-          placeholder="Search tasks"
-          aria-label="Search bar"
-        />
-      </FormControl>
-      <div>
+
       <Link to="/tasksCreate" style={{ textDecoration: 'none' }}>
-  <Button
-    variant="contained"
-    color="secondary"
-    className={TaskListStyle.createButton}
-  >
-    Create Task
-  </Button>
-</Link>
+        <Button variant="contained" color="secondary">
+          Create Task
+        </Button>
+      </Link>
+    </div>
+    <div>
+    <FormControl variant="outlined" className={TaskListStyle.dropdownFormControl}>
+        <InputLabel>Category</InputLabel>
+        <Select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          label="Category"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {dropdownData.categories.map((category) => (
+            <MenuItem key={category.id} value={category.id}>
+              {category.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       </div>
-      <Typography variant="h4" className={TaskListStyle.taskListTitle}>
-        Task List
-      </Typography>
       {Array.isArray(tasks) && tasks.map((task) => (
         task && task.id ? (
           <TaskCard
