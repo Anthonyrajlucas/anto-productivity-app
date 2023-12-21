@@ -19,7 +19,7 @@ function TaskList( { message, filter = "" }) {
     priorities: [],
     categories: [],
     states: [],
-    profiles: [],
+    users: [],
   });
 
   const [editTask, setEditTask] = useState(null);
@@ -60,14 +60,14 @@ function TaskList( { message, filter = "" }) {
           axios.get("/priorities"),
           axios.get("/categories"),
           axios.get("/states"),
-          axios.get("/profiles"),
+          axios.get("/profile-list"),
         ]);
 
         setDropdownData({
           priorities: prioritiesResponse.data || [],
           categories: categoriesResponse.data || [],
           states: statesResponse.data || [],
-          profiles: profilesResponse.data || [],
+          users: profilesResponse.data || [],
         });
       } catch (err) {
         console.error("Axios Error", err);
@@ -224,6 +224,7 @@ function TaskList( { message, filter = "" }) {
         priorities={dropdownData.priorities}
         categories={dropdownData.categories}
         states={dropdownData.states}
+        users={dropdownData.users}
         onSaveEdit={handleSaveEdit}
         setEditTask={setEditTask}
       />

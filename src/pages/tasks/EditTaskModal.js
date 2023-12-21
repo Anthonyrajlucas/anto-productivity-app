@@ -15,7 +15,7 @@ import {
   Chip,
 } from '@mui/material';
 
-const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,states }) => {
+const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,states,users }) => {
 
   const handleSaveClick = () => {
     onSaveEdit(editTask); 
@@ -99,7 +99,21 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
               ))}
             </Select>
             </FormControl>
-
+            <FormControl fullWidth>
+                <InputLabel id="assigned-to-label">Assigned To</InputLabel>
+                <Select
+                  labelId="assigned-to-label"
+                  id="assigned-to"
+                  value={editTask?.assigned_to || ''}
+                  onChange={(e) => setEditTask({ ...editTask, assigned_to: e.target.value })}
+                >
+                  {users.map((user) => (
+                    <MenuItem key={user.id} value={user.id}>
+                      {user.username} 
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </form>
           </CardContent>
           <CardActions>
