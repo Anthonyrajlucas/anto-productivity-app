@@ -1,26 +1,11 @@
-/* Carousel caption styling */
-.Carousel .carousel-caption {
-  background: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background for better readability */
-  border-radius: 5px;
-  padding: 15px;
+
+.custom-caption h3,
+.custom-caption p {
+  color: aqua;
+  padding: 5px; /* Some padding around the text */
+  border-radius: 5px; /* Optional: Rounded corners for the background */
+  display: inline-block; /* Ensures background only spans text width */
 }
-
-.Carousel .carousel-caption h3 {
-  color: #5b1414;
-  font-size: 26px;
-  font-weight: bold;
-  text-transform: capitalize;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding text shadow for better readability */
-}
-
-.Carousel .carousel-caption p {
-  color: #d31a1a;
-  font-size: 16px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Adding text shadow for better readability */
-}
-
-
-
 /* Footer styling */
 .Footer {
   background-color: #333;
@@ -55,20 +40,3 @@
   background-color: #0056b3; /* Darker shade for hover effect */
 }
 
-/* Carousel caption styling */
-.Carousel .carousel-caption {
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.Carousel .carousel-caption h3 {
-  color: #fff;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.Carousel .carousel-caption p {
-  color: #ddd;
-  font-size: 16px;
-}

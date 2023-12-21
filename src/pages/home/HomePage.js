@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button, Row, Col, Container, Image, Carousel } from "react-bootstrap";
+import { Card, Button, Row, Col, Container, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/HomePage.module.css";
@@ -16,10 +16,12 @@ function ControlledCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://res.cloudinary.com/df8bd97ok/image/upload/v1701808579/landing_1_hsqtnw.jpg"
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/c_scale,h_80/v1701808579/landing_1_hsqtnw.jpg"
           alt="First slide"
+          style={{ height: '250px', objectFit: 'cover' }}
+          
         />
-        <Carousel.Caption>
+        <Carousel.Caption className="custom-caption">
           <h3>Work</h3>
           <p>Boost your professional productivity with powerful task management tools. Stay organized, set priorities, and achieve your career goals efficiently.</p>
         </Carousel.Caption>
@@ -27,10 +29,11 @@ function ControlledCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://res.cloudinary.com/df8bd97ok/image/upload/ar_16:9,c_fill,g_auto,h_235,w_600/v1701808140/landing_uifyss.jpg"
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/ar_16:9,c_thumb,g_auto,h_235,w_600/v1701808140/landing_uifyss.jpg" 
           alt="Second slide"
+          style={{ height: '250px', objectFit: 'cover' }}
         />
-        <Carousel.Caption>
+        <Carousel.Caption className="custom-caption">
           <h3>Study</h3>
           <p>Unlock your academic potential with our smart study tools. Manage your study sessions, track progress, and conquer your academic challenges with ease.</p>
         </Carousel.Caption>
@@ -40,8 +43,9 @@ function ControlledCarousel() {
           className="d-block w-100"
           src="https://res.cloudinary.com/df8bd97ok/image/upload/c_scale,h_235,w_600/v1701808769/landing_2_woi6xe.png"
           alt="Third slide"
+          style={{ height: '250px', objectFit: 'cover' }}
         />
-        <Carousel.Caption>
+        <Carousel.Caption className="custom-caption">
           <h3>Fitness</h3>
           <p>
           Elevate your fitness journey with personalized workout plans and goal tracking. Achieve a healthier lifestyle, one step at a time, and embrace the power of a fit and active routine.
