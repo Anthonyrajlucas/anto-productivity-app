@@ -120,7 +120,9 @@ function AllTasks( { message, filter = "" }) {
         task && task.id ? (
           <Card>
           <CardContent>
-           <Typography variant="h6">{task.title}</Typography>
+           <Typography variant="h6" className={task.is_overdue ? TaskListStyle.overdueTask : ''}>
+           {task.title}
+           </Typography>
             <Typography variant="body1">Description: {task.description}</Typography>
             <Typography variant="body2">Due Date: {task.due_date}</Typography>
             <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>

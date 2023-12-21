@@ -37,3 +37,7 @@
     width: 200px; 
   }
   
+  .overdueTask {
+    color: red;
+  }
+  
