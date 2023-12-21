@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@mui/material';
 import axios from 'axios';
-import { Box, Button, FormControl, Input, InputAdornment, Typography, InputLabel , 
+import { Box, FormControl, Input, InputAdornment, Typography, InputLabel , 
          Select, MenuItem } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { Link } from "react-router-dom";
 import TaskListStyle from "../../styles/TaskList.module.css";
 import {
   useCurrentUser,
@@ -30,6 +29,9 @@ function AllTasks( { message, filter = "" }) {
         let queryURL = `/tasks/?${filter}search=${query}`;
         if (selectedCategory) {
           queryURL += `&category=${selectedCategory}`; 
+        }
+        if (currentUser && currentUser.profileId) {
+          queryURL += `&assignedTo=${currentUser.profileId}`;
         }
         const { data } = await axios.get(queryURL);
         setTasks(data.results || []);
