@@ -53,14 +53,12 @@ function AllTasks( { message, filter = "" }) {
           axios.get("/priorities"),
           axios.get("/categories"),
           axios.get("/states"),
-          axios.get("/profiles"),
         ]);
 
         setDropdownData({
           priorities: prioritiesResponse.data || [],
           categories: categoriesResponse.data || [],
           states: statesResponse.data || [],
-          profiles: profilesResponse.data || [],
         });
       } catch (err) {
         console.error("Axios Error", err);
@@ -74,15 +72,11 @@ function AllTasks( { message, filter = "" }) {
     const item = dropdownItems.find((item) => item.id === id);
     return item ? item.name : '';
   };
-  const getDropdownUserName = (id, dropdownItems) => {
-    const item = dropdownItems.find((item) => item.id === id);
-    return item ? item.owner : '';
-  };
 
   return (
     <Box className={TaskListStyle.taskListRoot}>
     <Typography variant="h4" className={TaskListStyle.taskListTitle}>
-      Task List
+      My Duty Tasks
     </Typography>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
       <FormControl variant="outlined" className={TaskListStyle.searchFormControl}>
@@ -100,11 +94,6 @@ function AllTasks( { message, filter = "" }) {
           }
         />
       </FormControl>
-      <Link to="/tasksCreate" style={{ textDecoration: 'none' }}>
-        <Button variant="contained" color="secondary">
-          Create Task
-        </Button>
-      </Link>
     </div>
     <div>
     <FormControl variant="outlined" className={TaskListStyle.dropdownFormControl}>
@@ -132,10 +121,9 @@ function AllTasks( { message, filter = "" }) {
            <Typography variant="h6">{task.title}</Typography>
             <Typography variant="body1">Description: {task.description}</Typography>
             <Typography variant="body2">Due Date: {task.due_date}</Typography>
-            <Typography variant="body2">Priority: {getDropdownItemName(task.priority, priorities)}</Typography>
-            <Typography variant="body2">Category: {getDropdownItemName(task.category, categories)}</Typography>
-            <Typography variant="body2">Status: {getDropdownItemName(task.state, states)}</Typography>
-            <Typography variant="body2">Assigned: {getDropdownUserName(task.assigned, profiles)}</Typography>
+            <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>
+            <Typography variant="body2">Category: {getDropdownItemName(task.category, dropdownData.categories)}</Typography>
+            <Typography variant="body2">Status: {getDropdownItemName(task.state, dropdownData.states)}</Typography>
           </CardContent>
         </Card>
         ) : null
