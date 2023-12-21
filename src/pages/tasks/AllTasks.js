@@ -30,8 +30,8 @@ function AllTasks( { message, filter = "" }) {
         if (selectedCategory) {
           queryURL += `&category=${selectedCategory}`; 
         }
-        if (currentUser && currentUser.profileId) {
-          queryURL += `&assignedTo=${currentUser.profileId}`;
+        if (currentUser && currentUser.profile_Id) {
+          queryURL += `&assignedTo=${currentUser.profile_id}`;
         }
         const { data } = await axios.get(queryURL);
         setTasks(data.results || []);
@@ -46,12 +46,12 @@ function AllTasks( { message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query , selectedCategory ]);
+  }, [filter, query , selectedCategory,currentUser ]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [prioritiesResponse, categoriesResponse, statesResponse, profilesResponse] = await Promise.all([
+        const [prioritiesResponse, categoriesResponse, statesResponse ] = await Promise.all([
           axios.get("/priorities"),
           axios.get("/categories"),
           axios.get("/states"),
