@@ -30,9 +30,6 @@ const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , onAssignedToMeCl
         <Button onClick={() => onDeleteClick(task)} style={{ backgroundColor: 'red', color: 'white' }}>
           Delete</Button>
           </> ) }
-          <Button onClick={() => onAssignedToMeClick(task)} style={{ backgroundColor: 'blue', color: 'white' }}>
-          Assigned to Me
-        </Button>
 
       </CardContent>
     </Card>

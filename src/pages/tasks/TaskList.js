@@ -213,7 +213,6 @@ function TaskList( { message, filter = "" }) {
             profiles={dropdownData.profiles}
             onEditClick={() => handleEditClick(task)}
             onDeleteClick={() => handleDeleteClick(task)}
-            onAssignedToMeClick={() => handleAssignToMe(task)}
           />
         ) : null
       ))}
