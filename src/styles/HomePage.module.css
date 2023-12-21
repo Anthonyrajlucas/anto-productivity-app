@@ -1,71 +1,74 @@
-/* src/styles/Homepage.module.css */
+/* Carousel caption styling */
+.Carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background for better readability */
+  border-radius: 5px;
+  padding: 15px;
+}
 
-.HomepageBackground {
-    background-color: #f4f4f4; /* Light gray background */
-    min-height: calc(100vh - 81px); /* Adjusted height */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center content vertically and horizontally */
-    padding: 30px 10px; /* Adjusted padding */
-  }
-  
-  .HomepageBoxPos {
-    width: 100%; /* Full width */
-    max-width: 600px; /* Maximum width of the content */
-    margin: auto; /* Center align the content */
-  }
-  
-  .HomepageCard {
-    background-color: #ffffff; /* White background */
-    border: 1px solid #f0f1f9; /* Border style */
-    border-radius: 2px; /* Border radius */
-    color: #7177a1; /* Text color */
-    padding: 10px; /* Padding inside the card */
-    margin-bottom: 30px; /* Space below the card */
-    box-shadow: none; /* No shadow */
-  }
-  
-  .CardTitle {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #2142b2; /* Header color */
-    margin-bottom: 15px; /* Space below title */
-  }
-  
-  .Footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0; /* Padding on top and bottom */
-    width: 100%;
-    position: relative; /* Adjusted to 'relative' */
-    margin-top: 30px; /* Space above the footer */
-  }
-  
-  .Footer a {
-    color: white;
-    text-decoration: none; /* Removing underline */
-    margin: 0 10px;
-    font-size: 1.2em; /* Larger icons */
-    transition: color 0.3s;
-  }
-  
-  .Footer a:hover {
-    color: #e0e0e0; /* Lighter color on hover */
-  }
-  
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .HomepageBoxPos {
-      width: 95%; /* Slightly reduced width for mobile */
-    }
-  
-    .HomepageCard {
-      margin-bottom: 20px; /* Smaller space below the card on mobile */
-    }
-  }
-  
+.Carousel .carousel-caption h3 {
+  color: #5b1414;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding text shadow for better readability */
+}
+
+.Carousel .carousel-caption p {
+  color: #d31a1a;
+  font-size: 16px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Adding text shadow for better readability */
+}
+
+
+
+/* Footer styling */
+.Footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+.ContactInfo {
+  margin-left: 20px;
+}
+
+/* Social media icons */
+.fa-twitter, .fa-facebook-f, .fa-linkedin-in {
+  color: white;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+/* Button styling from appStyles */
+.Button {
+  background-color: #007bff; /* Bootstrap primary color */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.Button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Carousel caption styling */
+.Carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.Carousel .carousel-caption h3 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.Carousel .carousel-caption p {
+  color: #ddd;
+  font-size: 16px;
+}

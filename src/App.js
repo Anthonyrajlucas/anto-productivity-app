@@ -8,6 +8,7 @@ import "./api/axiosDefaults";
 import TaskList from "./pages/tasks/TaskList";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import HomePage from "./pages/home/HomePage";
+import AllTasks from "./pages/tasks/AllTasks"
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route exact path="/signup" render={() => <SignUpForm />} />
         <Route exact path="/tasklist" render={() => <TaskList/>} />
         <Route exact path="/tasksCreate" render={() => <TaskCreateForm/>} />
+        <Route exact path="/alltasks" render={() => <AllTasks/>} />
+        <Route render={() => <p>Page not found!</p>} />
         <Route render={() => <p>Page not found!</p>} />
       </Switch>
     </Container>

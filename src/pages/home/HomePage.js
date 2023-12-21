@@ -1,14 +1,63 @@
-import React from "react";
-import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button, Row, Col, Container, Image, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/HomePage.module.css"
+import styles from "../../styles/HomePage.module.css";
+
+function ControlledCarousel() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
+  return (
+    <Carousel activeIndex={index} onSelect={handleSelect}>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/v1701808579/landing_1_hsqtnw.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>Work</h3>
+          <p>Boost your professional productivity with powerful task management tools. Stay organized, set priorities, and achieve your career goals efficiently.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/ar_16:9,c_fill,g_auto,h_235,w_600/v1701808140/landing_uifyss.jpg"
+          alt="Second slide"
+        />
+        <Carousel.Caption>
+          <h3>Study</h3>
+          <p>Unlock your academic potential with our smart study tools. Manage your study sessions, track progress, and conquer your academic challenges with ease.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/c_scale,h_235,w_600/v1701808769/landing_2_woi6xe.png"
+          alt="Third slide"
+        />
+        <Carousel.Caption>
+          <h3>Fitness</h3>
+          <p>
+          Elevate your fitness journey with personalized workout plans and goal tracking. Achieve a healthier lifestyle, one step at a time, and embrace the power of a fit and active routine.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
+}
 
 const Homepage = () => {
   return (
     <>
+      <ControlledCarousel />
       <Row className={`text-center ${styles.HomepageBackground}`}>
-        <Col sm={12}>
+      <Col sm={12}>
           <Container className={styles.HomepageBoxPos}>
             <Card className={styles.HomepageCard}>
               <Card.Body>
@@ -49,6 +98,7 @@ const Homepage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/* Assuming you have Font Awesome properly configured */}
               <i className="fab fa-twitter"></i>
             </a>
             <a
