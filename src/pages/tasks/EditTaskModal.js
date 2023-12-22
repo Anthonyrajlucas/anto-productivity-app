@@ -13,12 +13,12 @@ import {
   FormControl,
 } from '@mui/material';
 
-const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,states,users }) => {
-
+const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,users }) => {
+  
   const handleSaveClick = () => {
     onSaveEdit(editTask); 
   };
-
+  
   return (
     <Modal open={open} onClose={onClose}>
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -82,21 +82,6 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                 ))}
               </Select>
               </FormControl>
-              <FormControl fullWidth>
-                <InputLabel id="state-label">State</InputLabel>
-              <Select
-              labelId="state-label"
-              id="state"
-              value={editTask?.state || ''}
-              onChange={(e) => setEditTask({ ...editTask, state: e.target.value })}
-            >
-              {states.map((state) => (
-                <MenuItem key={state.id} value={state.id}>
-                  {state.name}
-                </MenuItem>
-              ))}
-            </Select>
-            </FormControl>
             <FormControl fullWidth>
                 <InputLabel id="assigned-to-label">Assigned To</InputLabel>
                 <Select

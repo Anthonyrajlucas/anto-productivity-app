@@ -16,7 +16,6 @@ function AllTasks( { message, filter = "" }) {
   const [editTask, setEditTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);  
   const [tasks, setTasks] = useState([]);
-  const [taskstatus, setTaskstatus] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState('');
   const [dropdownData, setDropdownData] = useState({
@@ -24,6 +23,7 @@ function AllTasks( { message, filter = "" }) {
     categories: [],
     states: [],
     profiles: [],
+    taskstatus: [],
   });
   const [notification, setNotification] = useState({ open: false, message: '', type: '' });
   
@@ -56,16 +56,19 @@ function AllTasks( { message, filter = "" }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [prioritiesResponse, categoriesResponse, statesResponse ] = await Promise.all([
+        const [prioritiesResponse, categoriesResponse, statesResponse, taskstatusResponse  ] = await Promise.all([
           axios.get("/priorities"),
           axios.get("/categories"),
           axios.get("/states"),
+          axios.get("/taskstatus"),
         ]);
 
         setDropdownData({
           priorities: prioritiesResponse.data || [],
           categories: categoriesResponse.data || [],
           states: statesResponse.data || [],
+          taskstatus : taskstatusResponse.data.results || [],
+
         });
       } catch (err) {
         console.error("Axios Error", err);
@@ -78,6 +81,14 @@ function AllTasks( { message, filter = "" }) {
   const getDropdownItemName = (id, dropdownItems) => {
     const item = dropdownItems.find((item) => item.id === id);
     return item ? item.name : '';
+  };
+
+  const getDropdownTaskState = (taskid, dropdownItems) => {
+    const item = dropdownItems.find((item) => item.task === taskid);
+    if ( item && item.state !== 'initial') {
+      return getDropdownItemName(item.state, dropdownData.states);
+    }
+    return '';
   };
 
   const handleEditClick = (task) => {
@@ -98,8 +109,13 @@ function AllTasks( { message, filter = "" }) {
         task: editedTask.id,  
         profile_id: editedTask.profile_id      
       };
-      const response = await axios.post(`/taskstatus/`, updatedTaskStatus);
-      console.log("Task Status Updated:", response.data);
+    const taskStatusResponse = await axios.get(`/taskstatus?task=${editedTask.id}`);
+    if (taskStatusResponse.data.results && taskStatusResponse.data.results.length > 0) {
+      const taskStatusId = taskStatusResponse.data.results[0].id; 
+      await axios.put(`/taskstatus/${taskStatusId}/`, updatedTaskStatus);
+    } else {
+      await axios.post(`/taskstatus/`, updatedTaskStatus);
+    }
       setIsModalOpen(false);
       setNotification({ open: true, message: 'Task and its status updated successfully!', type: 'success' });
     } catch (error) {
@@ -171,7 +187,7 @@ function AllTasks( { message, filter = "" }) {
             <Typography variant="body2">Due Date: {task.due_date}</Typography>
             <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>
             <Typography variant="body2">Category: {getDropdownItemName(task.category, dropdownData.categories)}</Typography>
-            <Typography variant="body2">Status: {getDropdownItemName(task.state, dropdownData.states)}</Typography>
+            <Typography variant="body2">Status: {getDropdownTaskState(task.id, dropdownData.taskstatus)}</Typography>
            <>
         <Button onClick={() => handleEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
           Update Status</Button> </> 

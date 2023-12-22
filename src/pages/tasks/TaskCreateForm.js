@@ -89,7 +89,6 @@ function TaskCreateForm() {
     formData.append("due_date", due_date);
     formData.append("priority", priority);
     formData.append("category", category);
-    formData.append("state", state);
   try {
     const { data } = await axios.post("/tasks/", formData);
     history.push(`/tasks/${data.id}`);
@@ -165,22 +164,6 @@ function TaskCreateForm() {
           {dropdownData.categories.map((categoryOption) => (
             <option key={categoryOption.id} value={categoryOption.id}>
               {categoryOption.name}
-            </option>
-          ))}
-        </Form.Control>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>State</Form.Label>
-        <Form.Control
-          as="select"
-          name="state"
-          value={state}
-          onChange={(event) => handleDropdownChange(event, 'state')}
-        >
-          <option value="">Select State</option>
-          {dropdownData.states.map((stateOption) => (
-            <option key={stateOption.id} value={stateOption.id}>
-              {stateOption.name}
             </option>
           ))}
         </Form.Control>

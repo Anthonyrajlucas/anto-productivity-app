@@ -20,6 +20,7 @@ function TaskList( { message, filter = "" }) {
     categories: [],
     states: [],
     users: [],
+    taskstatus: [],
   });
 
   const [editTask, setEditTask] = useState(null);
@@ -56,11 +57,12 @@ function TaskList( { message, filter = "" }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [prioritiesResponse, categoriesResponse, statesResponse, profilesResponse] = await Promise.all([
+        const [prioritiesResponse, categoriesResponse, statesResponse, profilesResponse , taskstatusResponse] = await Promise.all([
           axios.get("/priorities"),
           axios.get("/categories"),
           axios.get("/states"),
           axios.get("/profile-list"),
+          axios.get("/taskstatus"),
         ]);
 
         setDropdownData({
@@ -68,6 +70,7 @@ function TaskList( { message, filter = "" }) {
           categories: categoriesResponse.data || [],
           states: statesResponse.data || [],
           users: profilesResponse.data || [],
+          taskstatus : taskstatusResponse.data.results || [],
         });
       } catch (err) {
         console.error("Axios Error", err);
@@ -86,17 +89,6 @@ function TaskList( { message, filter = "" }) {
     }
   };
 
-  const handleAssignToMe = async (task)  => {
-    try {
-      const updatedTask = {  ...task, assigned_to: currentUser.profile_id };
-      const response = await axios.put(`/tasks/${task.id}/`, updatedTask);
-      setTasks((prevTasks) =>
-        prevTasks.map((t) => (t.id === task.id ? response.data : t))
-      );
-    } catch (error) {
-      console.error("Error assigning task:", error);
-    }
-  };
 
   const handleDeleteClick = (task) => {
     setDeleteTask(task);
@@ -212,23 +204,26 @@ function TaskList( { message, filter = "" }) {
             priorities={dropdownData.priorities}
             categories={dropdownData.categories}
             states={dropdownData.states}
+            taskstatus={dropdownData.taskstatus}
             profiles={dropdownData.profiles}
             onEditClick={() => handleEditClick(task)}
             onDeleteClick={() => handleDeleteClick(task)}
           />
         ) : null
       ))}
+      {
+  editTask && (
       <EditTaskModal
         open={isModalOpen}
         onClose={handleCloseModal}
         editTask={editTask}
         priorities={dropdownData.priorities}
         categories={dropdownData.categories}
-        states={dropdownData.states}
-        users={dropdownData.users}
+        profiles={dropdownData.profiles}        
         onSaveEdit={handleSaveEdit}
         setEditTask={setEditTask}
-      />
+      />)
+    }
       <ConfirmDeleteDialog
         open={deleteConfirmation}
         onClose={handleCancelDelete}

@@ -1,15 +1,26 @@
 import React, { } from 'react';
 import { Card, CardContent, Button, Typography,  Chip } from '@mui/material';
 
-const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , onAssignedToMeClick , priorities,categories, states, profiles}) => {
+const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , priorities,states,categories, taskstatus, profiles}) => {
   const getDropdownItemName = (id, dropdownItems) => {
+    if (!dropdownItems) return '';
     const item = dropdownItems.find((item) => item.id === id);
     return item ? item.name : '';
   };
   const getDropdownUserName = (id, dropdownItems) => {
+    if (!dropdownItems) return  'Not Assigned';
     const item = dropdownItems.find((item) => item.id === id);
-    return item ? item.owner : '';
+    return item ? item.owner : 'Not Assigned';
   };
+  const getDropdownTaskState = (taskid, dropdownItems) => {
+    if (!dropdownItems) return '';
+    const item = dropdownItems.find((item) => item.task === taskid);
+    if ( item && item.state !== 'initial') {
+      return getDropdownItemName(item.state, states);
+    }
+    return '';
+  };
+
 
   return (
     <Card>
@@ -19,10 +30,8 @@ const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , onAssignedToMeCl
         <Typography variant="body2">Due Date: {task.due_date}</Typography>
         <Typography variant="body2">Priority: {getDropdownItemName(task.priority, priorities)}</Typography>
         <Typography variant="body2">Category: {getDropdownItemName(task.category, categories)}</Typography>
-        <Typography variant="body2">State: {getDropdownItemName(task.state, states)}</Typography>
-        {/*       
-// <Typography variant="body2">Is Overdue: {task.is_overdue.toString()}</Typography>
-         */}
+        <Typography variant="body2">Assigned To: {getDropdownUserName(task.assigned_to, profiles)}</Typography>        
+        <Typography variant="body2">Status:{getDropdownTaskState(task.id, taskstatus )}</Typography>
          {isOwner && (
            <>
         <Button onClick={() => onEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
