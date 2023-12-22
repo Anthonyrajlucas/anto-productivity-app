@@ -59,7 +59,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                   value={editTask?.priority || ''}
                   onChange={(e) => setEditTask({ ...editTask, priority: e.target.value })}
                 >
-                  {priorities.map((priority) => (
+                  {priorities && priorities.map((priority) => (
                     <MenuItem key={priority.id} value={priority.id}>
                       {priority.name}
                     </MenuItem>
@@ -75,7 +75,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                 value={editTask?.category || ''}
                 onChange={(e) => setEditTask({ ...editTask, category: e.target.value })}
               >
-                {categories.map((category) => (
+                 {categories && categories.map((category) => (
                   <MenuItem key={category.id} value={category.id}>
                     {category.name}
                   </MenuItem>
@@ -90,7 +90,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                   value={editTask?.assigned_to || ''}
                   onChange={(e) => setEditTask({ ...editTask, assigned_to: e.target.value })}
                 >
-                  {users.map((user) => (
+                  {users && users.map((user) => (
                     <MenuItem key={user.id} value={user.id}>
                       {user.username} 
                     </MenuItem>

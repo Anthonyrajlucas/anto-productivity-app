@@ -205,7 +205,7 @@ function TaskList( { message, filter = "" }) {
             categories={dropdownData.categories}
             states={dropdownData.states}
             taskstatus={dropdownData.taskstatus}
-            profiles={dropdownData.profiles}
+            profiles={dropdownData.users}
             onEditClick={() => handleEditClick(task)}
             onDeleteClick={() => handleDeleteClick(task)}
           />
@@ -219,7 +219,7 @@ function TaskList( { message, filter = "" }) {
         editTask={editTask}
         priorities={dropdownData.priorities}
         categories={dropdownData.categories}
-        profiles={dropdownData.profiles}        
+        users={dropdownData.users}        
         onSaveEdit={handleSaveEdit}
         setEditTask={setEditTask}
       />)

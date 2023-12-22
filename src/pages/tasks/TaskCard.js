@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import { Card, CardContent, Button, Typography,  Chip } from '@mui/material';
+import { Card, CardContent, Button, Typography } from '@mui/material';
 
 const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , priorities,states,categories, taskstatus, profiles}) => {
   const getDropdownItemName = (id, dropdownItems) => {
@@ -10,15 +10,15 @@ const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , priorities,state
   const getDropdownUserName = (id, dropdownItems) => {
     if (!dropdownItems) return  'Not Assigned';
     const item = dropdownItems.find((item) => item.id === id);
-    return item ? item.owner : 'Not Assigned';
+    return item ? item.username : 'Not Assigned';
   };
   const getDropdownTaskState = (taskid, dropdownItems) => {
-    if (!dropdownItems) return '';
+    if (!dropdownItems) return 'Not updated';
     const item = dropdownItems.find((item) => item.task === taskid);
     if ( item && item.state !== 'initial') {
       return getDropdownItemName(item.state, states);
     }
-    return '';
+    return 'Not updated';
   };
 
 

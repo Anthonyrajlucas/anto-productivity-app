@@ -7,8 +7,6 @@ import axios from 'axios';
 
 
 function TaskCreateForm() {
-  const [users, setUsers] = useState([]);
-  const [errors, setErrors] = useState({});
   const [showModal, setShowModal] = useState(false);  
 
   const history = useHistory();
@@ -18,15 +16,13 @@ function TaskCreateForm() {
     due_date: "",
     priority: "",
     category: "",
-    state: "",
   });
 
   const {  title,
     description,
     due_date,
     priority,
-    category,
-    state } = task;
+    category } = task;
 
   const [dropdownData, setDropdownData] = useState({
     priorities: [],
@@ -34,13 +30,6 @@ function TaskCreateForm() {
     states: [],
   });
 
- 
-  useEffect(() => {
-    axios
-      .get("/profiles/")
-      .then((response) => setUsers(response.data))
-      .catch((error) => console.log(error));
-  }, []);
  
   useEffect(() => {
     const fetchData = async () => {
@@ -96,9 +85,6 @@ function TaskCreateForm() {
     console.log("New Task Created:", data);
   } catch (error) {
     console.log(error);
-      if (error.response?.status !== 401) {
-        setErrors(error.response?.data);
-      }
   } 
   };
 
