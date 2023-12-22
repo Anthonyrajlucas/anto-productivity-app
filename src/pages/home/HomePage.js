@@ -3,8 +3,12 @@ import { Card, Button, Row, Col, Container, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/HomePage.module.css";
+import {
+  useCurrentUser
+} from "../../contexts/CurrentUserContext";
 
 function ControlledCarousel() {
+
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -57,6 +61,7 @@ function ControlledCarousel() {
 }
 
 const Homepage = () => {
+  const currentUser = useCurrentUser();
   return (
     <>
       <ControlledCarousel />
@@ -74,6 +79,7 @@ const Homepage = () => {
                   Ready to take control of your time?
                 </Card.Text>
               </Card.Body>
+              {!currentUser && (
               <Card.Body>
                 <Link to="/signin">
                   <Button className={`${appStyles.Button} mb-3`}>
@@ -86,6 +92,7 @@ const Homepage = () => {
                   </Button>
                 </Link>
               </Card.Body>
+              ) }
             </Card>
           </Container>
         </Col>
