@@ -13,8 +13,9 @@ import {
   FormControl,
 } from '@mui/material';
 
-const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,users }) => {
-  
+const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories, users }) => {
+  const inputStyle = { marginBottom: '15px' };
+
   const handleSaveClick = () => {
     onSaveEdit(editTask); 
   };
@@ -27,33 +28,36 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
             <Typography variant="h6">Edit Task</Typography>
             <form>
               <TextField
+                style={inputStyle}
                 label="Title"
                 variant="outlined"
                 value={editTask?.title || ''}
                 fullWidth
                 onChange={(e) => setEditTask({ ...editTask, title: e.target.value })}
               />
+
               <TextField
+                style={inputStyle}
                 label="Description"
                 variant="outlined"
                 value={editTask?.description || ''}
                 fullWidth
                 onChange={(e) => setEditTask({ ...editTask, description: e.target.value })}
               />
+
               <TextField
+                style={inputStyle}
                 label="Due Date"
                 variant="outlined"
                 value={editTask?.due_date || ''}
-
                 fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                InputLabelProps={{ shrink: true }}
                 onChange={(e) => setEditTask({ ...editTask, due_date: e.target.value })}
               />
-              <FormControl fullWidth>
+
+              <FormControl fullWidth style={inputStyle}>
                 <InputLabel id="priority-label">Priority</InputLabel>
-               <Select
+                <Select
                   labelId="priority-label"
                   id="priority"
                   value={editTask?.priority || ''}
@@ -65,24 +69,25 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                     </MenuItem>
                   ))}
                 </Select>
-                </FormControl>
-                <FormControl fullWidth>
+              </FormControl>
+
+              <FormControl fullWidth style={inputStyle}>
                 <InputLabel id="category-label">Category</InputLabel>
                 <Select
-                label="Category"
-                labelId="category-label"
-                id="category"
-                value={editTask?.category || ''}
-                onChange={(e) => setEditTask({ ...editTask, category: e.target.value })}
-              >
-                 {categories && categories.map((category) => (
-                  <MenuItem key={category.id} value={category.id}>
-                    {category.name}
-                  </MenuItem>
-                ))}
-              </Select>
+                  labelId="category-label"
+                  id="category"
+                  value={editTask?.category || ''}
+                  onChange={(e) => setEditTask({ ...editTask, category: e.target.value })}
+                >
+                  {categories && categories.map((category) => (
+                    <MenuItem key={category.id} value={category.id}>
+                      {category.name}
+                    </MenuItem>
+                  ))}
+                </Select>
               </FormControl>
-            <FormControl fullWidth>
+
+              <FormControl fullWidth style={inputStyle}>
                 <InputLabel id="assigned-to-label">Assigned To</InputLabel>
                 <Select
                   labelId="assigned-to-label"
@@ -92,7 +97,7 @@ const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, prior
                 >
                   {users && users.map((user) => (
                     <MenuItem key={user.id} value={user.id}>
-                      {user.username} 
+                      {user.username}
                     </MenuItem>
                   ))}
                 </Select>
