@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@mui/material';
 import axios from 'axios';
+import EditTaskStatus from "./EditTaskStatus";
 import { Box, FormControl, Input, InputAdornment, Typography, InputLabel , 
-         Select, MenuItem } from '@mui/material';
+         Select, MenuItem, Button,  Snackbar, Alert } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import TaskListStyle from "../../styles/TaskList.module.css";
 import {
@@ -12,6 +13,8 @@ import {
 
 function AllTasks( { message, filter = "" }) {
   const currentUser = useCurrentUser();
+  const [editTask, setEditTask] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);  
   const [tasks, setTasks] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -21,7 +24,8 @@ function AllTasks( { message, filter = "" }) {
     states: [],
     profiles: [],
   });
-
+  const [notification, setNotification] = useState({ open: false, message: '', type: '' });
+  
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -73,6 +77,45 @@ function AllTasks( { message, filter = "" }) {
   const getDropdownItemName = (id, dropdownItems) => {
     const item = dropdownItems.find((item) => item.id === id);
     return item ? item.name : '';
+  };
+
+  const handleEditClick = (task) => {
+    if (task) {
+      setEditTask({ ...task });
+      setIsModalOpen(true);
+    } else {
+      console.error('Task data is not available.');
+    }
+  };  
+
+  const handleSaveEdit = async (editedTask) => {
+    try {
+      console.log("Editing task:", editedTask);
+
+      const response = await axios.put(`/tasks/${editedTask.id}/`, editedTask);
+      console.log("Task Updated:", response.data);
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === editedTask.id ? response.data : task
+        )
+      );
+      setIsModalOpen(false);
+      setNotification({ open: true, message: 'Task updated successfully!', type: 'success' });
+    } catch (error) {
+      console.error("Error updating task:", error);
+      setNotification({ open: true, message: 'Error updating task!', type: 'error' });
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCloseNotification = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setNotification({ ...notification, open: false });
   };
 
   return (
@@ -128,10 +171,27 @@ function AllTasks( { message, filter = "" }) {
             <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>
             <Typography variant="body2">Category: {getDropdownItemName(task.category, dropdownData.categories)}</Typography>
             <Typography variant="body2">Status: {getDropdownItemName(task.state, dropdownData.states)}</Typography>
+            {task.isOwner && (
+           <>
+        <Button onClick={() => handleEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
+          Update Status</Button> </> ) }
           </CardContent>
         </Card>
         ) : null
       ))}
+      <EditTaskStatus
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        editTask={editTask}
+        states={dropdownData.states}
+        onSaveEdit={handleSaveEdit}
+        setEditTask={setEditTask}
+      />
+      <Snackbar open={notification.open} autoHideDuration={6000} onClose={handleCloseNotification}>
+  <Alert onClose={handleCloseNotification} severity={notification.type} sx={{ width: '100%' }}>
+    {notification.message}
+  </Alert>
+</Snackbar>      
     </Box>
   );
 };
