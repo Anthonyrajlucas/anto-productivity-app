@@ -145,8 +145,10 @@ function TaskList( { message, filter = "" }) {
         )
       );
       setDeleteConfirmation(false);
+      setNotification({ open: true, message: 'Task deleted successfully!', type: 'success' });
     } catch (error) {
       console.error("Error deleting task:", error);
+      setNotification({ open: true, message: 'Error deleting task!', type: 'error' });
     }
   };
 
