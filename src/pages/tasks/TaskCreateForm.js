@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import {  Form, Button, Col, Modal } from "react-bootstrap";
+import {  Form, Button, Col, Modal , Alert} from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from 'axios';
+import TaskListStyle from "../../styles/TaskList.module.css";
 
 
 function TaskCreateForm() {
   const [showModal, setShowModal] = useState(false);  
-
+  const [dueDateError, setDueDateError] = useState("");
   const history = useHistory();
   const [task, setTask] = useState({
     title: "",
@@ -53,6 +54,16 @@ function TaskCreateForm() {
     fetchData();
   }, []);
 
+  const handleDateChange = (event) => {
+    if (event.target.name === "due_date") {
+      setDueDateError(""); 
+    }
+    setTask({
+      ...task,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const handleChange = (event) => {
     setTask({
         ...task,
@@ -71,7 +82,10 @@ function TaskCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+    if (new Date(due_date) < new Date()) {
+      setDueDateError("Due date cannot be earlier than today.");
+      return;
+    }
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -115,11 +129,17 @@ function TaskCreateForm() {
       </Form.Group>
       <Form.Group>
         <Form.Label>Due Date</Form.Label>
+        {dueDateError && (
+        <Alert variant="danger">
+          {dueDateError}
+        </Alert>
+      )}        
         <Form.Control
           type="date"
           name="due_date"
           value={due_date}
-          onChange={handleChange}
+          onChange={handleDateChange}
+          isInvalid={!!dueDateError}
         />
       </Form.Group>
       <Form.Group>
@@ -167,36 +187,37 @@ function TaskCreateForm() {
   );
 
   return (
-<Form onSubmit={handleSubmit}>
-      {showModal && (
-        <Modal show={showModal} onHide={handleCloseModal} centered={true}>
-          <Modal.Header closeButton>
-            <Modal.Title>Success</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Task created successfully!
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+    <div className={`${TaskListStyle.Content} ${TaskListStyle.TextAlignCenter} ${TaskListStyle.CustomFormWidth} d-flex flex-column justify-content-center`}>
+     <Form onSubmit={handleSubmit}>
+     {showModal && (
+                    <Modal show={showModal} onHide={handleCloseModal} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Success</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Task created successfully!</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={handleCloseModal}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
       )}
-      <div className={appStyles.CenterAlignForm}>
+      <div className={TaskListStyle.CenterAlignForm}>
         <Col md={7} lg={8}>
           <div
-            className={`${appStyles.Content} ${appStyles.TextAlignCenter} d-flex flex-column justify-content-center`}
+            className={`${TaskListStyle.Content} ${TaskListStyle.TextAlignCenter} d-flex flex-column justify-content-center`}
           >
             <h3>Create Task</h3>
-            <div className={appStyles.Content}>
+            <div className={TaskListStyle.Content}>
               {textFields}
             </div>
           </div>
         </Col>
       </div>
     </Form>
+    </div>
      );
+
 }
 
 export default TaskCreateForm;

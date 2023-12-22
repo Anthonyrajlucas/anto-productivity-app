@@ -188,9 +188,11 @@ function AllTasks( { message, filter = "" }) {
             <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>
             <Typography variant="body2">Category: {getDropdownItemName(task.category, dropdownData.categories)}</Typography>
             <Typography variant="body2">Status: {getDropdownTaskState(task.id, dropdownData.taskstatus)}</Typography>
-           <>
-        <Button onClick={() => handleEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
-          Update Status</Button> </> 
+            {getDropdownTaskState(task.id, dropdownData.taskstatus) !== 'Completed' && (
+        <Button onClick={() => handleEditClick(task)} style={{ backgroundColor: 'blue', color: 'white' }}>
+          Update Status
+        </Button>
+      )}
           </CardContent>
         </Card>
         ) : null

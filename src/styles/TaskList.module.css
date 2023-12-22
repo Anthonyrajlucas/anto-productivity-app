@@ -41,3 +41,14 @@
     color: red;
   }
   
+  .CenterAlignForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Or any other height as required */
+  }
+
+  .CustomFormWidth {
+    max-width: 800px; /* or any other width */
+    margin: auto; /* for centering */
+  }
