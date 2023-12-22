@@ -30,8 +30,8 @@ function AllTasks( { message, filter = "" }) {
         if (selectedCategory) {
           queryURL += `&category=${selectedCategory}`; 
         }
-        if (currentUser && currentUser.profile_Id) {
-          queryURL += `&assignedTo=${currentUser.profile_id}`;
+        if (currentUser && currentUser.profile_id) {
+          queryURL += `&assigned_to=${currentUser.profile_id}`;
         }
         const { data } = await axios.get(queryURL);
         setTasks(data.results || []);
