@@ -7,12 +7,10 @@ import {
   Typography,
   TextField,
   Modal,
-  Input,
   Select,
   MenuItem,
   InputLabel,
   FormControl,
-  Chip,
 } from '@mui/material';
 
 const EditTaskModal = ({ open, onClose, editTask, onSaveEdit, setEditTask, priorities, categories,states,users }) => {

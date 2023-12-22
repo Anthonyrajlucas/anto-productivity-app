@@ -5,7 +5,6 @@ import {
   CardActions,
   Button,
   Typography,
-  TextField,
   Modal,
   Select,
   MenuItem,
@@ -24,22 +23,14 @@ const EditTaskStatus = ({ open, onClose, editTask, onSaveEdit, setEditTask,state
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
         <Card>
           <CardContent>
-            <Typography variant="h6">Edit Task Status</Typography>
+            <Typography variant="h6">Update Task Status</Typography>
             <form>
-              <TextField
-                label="Title"
-                variant="outlined"
-                value={editTask?.title || ''}
-                fullWidth
-                onChange={(e) => setEditTask({ ...editTask, title: e.target.value })}
-              />
-              <TextField
-                label="Description"
-                variant="outlined"
-                value={editTask?.description || ''}
-                fullWidth
-                onChange={(e) => setEditTask({ ...editTask, description: e.target.value })}
-              />
+            <Typography variant="body1" gutterBottom>
+              <strong>Title:</strong> {editTask?.title || ''}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              <strong>Description:</strong> {editTask?.description || ''}
+            </Typography>
               <FormControl fullWidth>
                 <InputLabel id="state-label">State</InputLabel>
               <Select

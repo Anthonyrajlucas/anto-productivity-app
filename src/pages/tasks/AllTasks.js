@@ -16,6 +16,7 @@ function AllTasks( { message, filter = "" }) {
   const [editTask, setEditTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);  
   const [tasks, setTasks] = useState([]);
+  const [taskstatus, setTaskstatus] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState('');
   const [dropdownData, setDropdownData] = useState({
@@ -90,20 +91,20 @@ function AllTasks( { message, filter = "" }) {
 
   const handleSaveEdit = async (editedTask) => {
     try {
-      console.log("Editing task:", editedTask);
-
-      const response = await axios.put(`/tasks/${editedTask.id}/`, editedTask);
-      console.log("Task Updated:", response.data);
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.id === editedTask.id ? response.data : task
-        )
-      );
+      console.log("Editing task status:", editedTask);
+      const updatedTaskStatus = {
+        owner: editedTask.owner,  
+        state: editedTask.state,      
+        task: editedTask.id,  
+        profile_id: editedTask.profile_id      
+      };
+      const response = await axios.post(`/taskstatus/`, updatedTaskStatus);
+      console.log("Task Status Updated:", response.data);
       setIsModalOpen(false);
-      setNotification({ open: true, message: 'Task updated successfully!', type: 'success' });
+      setNotification({ open: true, message: 'Task and its status updated successfully!', type: 'success' });
     } catch (error) {
-      console.error("Error updating task:", error);
-      setNotification({ open: true, message: 'Error updating task!', type: 'error' });
+      console.error("Error updating task and status:", error);
+      setNotification({ open: true, message: 'Error updating task and status!', type: 'error' });
     }
   };
 
@@ -171,10 +172,9 @@ function AllTasks( { message, filter = "" }) {
             <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>
             <Typography variant="body2">Category: {getDropdownItemName(task.category, dropdownData.categories)}</Typography>
             <Typography variant="body2">Status: {getDropdownItemName(task.state, dropdownData.states)}</Typography>
-            {task.isOwner && (
            <>
         <Button onClick={() => handleEditClick(task)} style={{ backgroundColor: 'green', color: 'white' }}>
-          Update Status</Button> </> ) }
+          Update Status</Button> </> 
           </CardContent>
         </Card>
         ) : null
