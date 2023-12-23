@@ -3,8 +3,9 @@
 /* Footer styling */
 .Footer {
   
-  color: white;
+  color: #fafafa;
   padding: 20px 0;
+  background-color: black;
 }
 
 .ContactInfo {
