@@ -17,10 +17,7 @@ const NavBar = () => {
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
- /*
-    Handles user logout and
-    redirects to the landing page
-  */ 
+
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
@@ -68,11 +65,10 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
+        to="/profile"
       >
         <Avatar src={currentUser?.profile_image} height={40} />
-        {currentUser?.first_name ? `Hi, ${currentUser.first_name},{currentUser.last_name}` : 'Profile'}
-
+        {currentUser?.username ? `Hi, ${currentUser.username}` : 'Profile'}
       </NavLink>
     </>
   );

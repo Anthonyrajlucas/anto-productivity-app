@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import {  Form, Button, Col, Modal , Alert} from "react-bootstrap";
-import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from 'axios';
 import TaskListStyle from "../../styles/TaskList.module.css";
