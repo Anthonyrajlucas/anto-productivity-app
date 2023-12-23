@@ -33,7 +33,7 @@ function ControlledCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://res.cloudinary.com/df8bd97ok/image/upload/ar_16:9,c_thumb,g_auto,h_235,w_600/v1701808140/landing_uifyss.jpg" 
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/t_Banner 16:9/v1703325843/64f043b633c0fb9f9feb577e_best-ai-productivity-tools_teszni.jpg" 
           alt="Second slide"
           style={{ height: '250px', objectFit: 'cover' }}
         />
