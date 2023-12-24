@@ -357,8 +357,38 @@ The following pages have been tested by direct input:
 ### CSS
 
 The CSS code was validated using [W3 Jigsaw Validator](https://jigsaw.w3.org/css-validator/)<br>
-At the time of deployment the validation for *style.css* has the following outcome:<br><br>
+At the time of deployment the validation for *module.css* has the following outcome:<br><br>
 
 
-![css-validation](docs/img/validations/pp4_css_validation.png)
+![css-validation](documentation/validation/css-validation-asset.png)
+
+The following pages have been tested by direct input:
+* Asset
+* Avatar
+* Button
+* EditTaskModel
+* HomePage
+* NavBar
+* ProfilePage
+* SignInUpForm
+* TaskList
+* App
+* index
+
+| Template | Validation Result |  Final validation
+|--------|-----------|---------|
+| asset.module.css | no errors | pass|
+| avatar.module.css | no errors | pass |
+| button.module.css | no errors | pass |
+| edit.module.css | no errors | pass
+| homepage.module.css | no errors | pass
+| navbar.module.css | no errors | pass ||
+| profilepage.module.css | no errors| pass
+| signinupform.module.css | no errors | pass |
+| tasklist.module.css | no errors | pass |
+| app.module.css | no errors | pass |
+| index.css | no errors | pass |
+
+
+
 
