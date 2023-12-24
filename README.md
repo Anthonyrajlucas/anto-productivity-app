@@ -145,3 +145,24 @@ The home page of the productivity app features a visually engaging carousel high
 <summary>Home page image</summary>
 <img src="documentation/features/home_page.png">
 </details>
+
+
+
+### Nav Bar
+
+The navigation bar of the Anto-Productivity-App is designed for user-friendly navigation and quick access to key features. It typically includes links to various sections of the app, such as Home, my duty tasks, my invention tasks , profile. Additionally, there are options for users to log in or sign up, enhancing the user experience by providing easy access to account management. The design is clean and intuitive, ensuring users can effortlessly navigate through the app.
+
+<details>
+<summary>Nav Bar image</summary>
+<img src="documentation/features/nav_bar.png">
+</details>
+
+### Profile Section
+
+Profile Section is a feature of the Anto-Productivity-App giving users some personality on the platform and also user can edit/save profile image and name 
+
+<details>
+<summary>Profile Section image</summary>
+<img src="documentation/features/profile.png">
+</details>
+
