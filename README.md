@@ -166,3 +166,12 @@ Profile Section is a feature of the Anto-Productivity-App giving users some pers
 <img src="documentation/features/profile.png">
 </details>
 
+
+
+
+
+## Validation 
+
+### HTML Validation
+
+The W3C Markup Validation Service was used to validate the HTML of the website. No errors were identified. 
