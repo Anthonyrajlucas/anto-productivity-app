@@ -389,6 +389,89 @@ The following pages have been tested by direct input:
 | app.module.css | no errors | pass |
 | index.css | no errors | pass |
 
+### ESLint JavaScript JSX Validation 
+
+All JavaScript files were validated using the ESLint JavaScript validator. All files passed however some rules needed to be set in the eslintrc.js file as described below:
+
+`"rules": {
+        "react/prop-types": 0,
+        "react/no-children-prop": "off",
+        "react/display-name": "off"
+    }`
+
+  - `"react/prop-types": 0` was used to suppress the errors relating to prop-types
+  - `"react/no-children-prop": "off"` was used to suppress the errors related to the Infinite Scroll component using children={} 
+  - `"react/display-name": "off"` was used to suppress the need for a component display name 
+
+### Chrome Dev Tools Lighthouse Validation
+
+Lighthouse was used to test the performance, accessibility, best practices, and SEO of the site. The validation was done for both desktop & and mobile.  
+
+**Lighthouse reports:**<br>
+
+<details>
+<summary>Desktop</summary>
+
+* Home page<br>
+![lighthouse-home](docs/img/validations/lighthouse_home_desktop.png)<br>
+
+* Menu page<br>
+![lighthouse-menu](docs/img/validations/lighthouse_menu_desktop.png)<br>
+
+* Contact page<br>
+![lighthouse-contact](docs/img/validations/lighthouse-contact_desktop.png)<br>
+
+* Reviews page<br>
+![lighthouse-reviews](docs/img/validations/reviews_lighthouse_desktop.png)<br>
+
+* Bookings page<br>
+![lighthouse-bookings](docs/img/validations/lighthouse_createbooking_desktop.png)<br>
+
+* Manage Bookings page<br>
+![lighthouse-manage-bookings](docs/img/validations/lighthouse_managebooking_desktop.png)<br>
+
+* Profile page<br>
+![lighthouse-profile](docs/img/validations/lighthouse_profile-desktop.png)<br>
+
+* Register page<br>
+![lighthouse-register](docs/img/validations/lighthouse_register_desktop.png)<br>
+
+* Login page<br>
+![lighthouse-profile](docs/img/validations/lighthouse_login_desktop.png)<br>
+
+</details>
+
+<details>
+<summary>Mobile</summary>
+
+* Home page<br>
+![lighthouse-home](docs/img/validations/lighthouse_home_mobile.png)<br>
+
+* Menu page<br>
+![lighthouse-menu](docs/img/validations/lighthouse_home_mobile.png)<br>
+
+* Contact page<br>
+![lighthouse-contact](docs/img/validations/lighthouse_contact_mobile.png)<br>
+
+* Reviews page<br>
+![lighthouse-reviews](docs/img/validations/lighthouse_reviews_mobile.png)<br>
+
+* Bookings page<br>
+![lighthouse-bookings](docs/img/validations/lighthouse_createbooking_mobile.png)<br>
+
+* Manage Bookings page<br>
+![lighthouse-manage-bookings](docs/img/validations/lighthouse_managebooking_mobile.png)<br>
+
+* Profile page<br>
+![lighthouse-profile](docs/img/validations/lighthouse_profile-desktop.png)<br>
+
+* Register page<br>
+![lighthouse-register](docs/img/validations/lighthouse_register_mobile.png)<br>
+
+* Login page<br>
+![lighthouse-profile](docs/img/validations/lighthouse_login_mobile.png)<br>
+</details>
+
 
 
 

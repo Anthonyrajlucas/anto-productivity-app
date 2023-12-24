@@ -20,7 +20,7 @@ function ControlledCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://res.cloudinary.com/df8bd97ok/image/upload/c_scale,h_80/v1701808579/landing_1_hsqtnw.jpg"
+          src="https://res.cloudinary.com/df8bd97ok/image/upload/ar_16:9,c_fill,g_auto,h_200,q_70,w_400/v1701808579/landing_1_hsqtnw.jpg"
           alt="First slide"
           style={{ height: '250px', objectFit: 'cover' }}
           
@@ -109,7 +109,6 @@ const Homepage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {/* Assuming you have Font Awesome properly configured */}
               <i className="fab fa-twitter"></i>
             </a>
             <a
