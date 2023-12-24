@@ -65,9 +65,9 @@ The key functionality aspects:
 
 - The site to be simple and use intuitive navigation across all pages
 - User authentication
-- User interaction via tasks, comments and packs
+- User interaction via Tasks, My Invention Task and My Duty Task
 - User's to have their own profiles with brief description, profile image and tab group consisting of their owned tasks, packs and other users tasks which they have been assigned
-- CRUD functionality for task, comments, packs and their profile
+- CRUD functionality for task, My Invention Task, My Duty Task and their Profile
 - Tasks filtering by keyword search, new tasks and high priority tasks
 - Responsiveness to allow pleasant usage of the app across a range of devices with varying display sizes
 
@@ -135,3 +135,13 @@ The key functionality aspects:
 | web-vitals | 2.1.4 |
 
 
+
+
+### Home page
+
+The home page of the productivity app features a visually engaging carousel highlighting key app functionalities related to work, study, and fitness. Below the carousel, a welcoming card introduces users to the "Anto-Productivity-App," emphasizing productivity enhancement and efficient task management. For users not logged in, prominent login and signup buttons are provided. The page concludes with a responsive footer displaying contact information and social media links. Implemented using React, the page maintains a cohesive design through React Bootstrap and custom CSS modules. Overall, the home page effectively communicates the app's purpose and encourages user interaction.
+
+<details>
+<summary>Home page image</summary>
+<img src="documentation/features/home_page.png">
+</details>
