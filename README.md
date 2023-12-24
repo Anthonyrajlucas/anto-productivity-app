@@ -297,8 +297,23 @@ Profile Section is a feature of the Anto-Productivity-App giving users some pers
 <img src="documentation/features/profile.png">
 </details>
 
+### SignIn Page 
 
+The signup page of the Anto-Productivity-App is designed to facilitate user registration while ensuring data accuracy and security through error validation.The page includes various input fields such as name, password, and potentially other relevant informatio
 
+<details>
+<summary>Signin Page image</summary>
+<img src="documentation/features/signin_page.png">
+</details>
+
+### SignUp Page 
+
+A typical signup page for an app like the Anto-Productivity-App serves as the entry point for new users to create an account. The design and functionality of this page are crucial for a smooth user onboarding experience. Here's a brief overview of its key elements and functionalities
+
+<details>
+<summary>signup page image </summary>
+<img src="documentation/features/signup_page.png">
+</details>
 
 
 ## Code Validation
