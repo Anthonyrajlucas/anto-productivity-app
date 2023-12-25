@@ -327,31 +327,30 @@ At the time of deployment the validation have the following outcome:<br><br>
 ![html-validation](docs/img/validations/pp4_html_validation.png)
 
 The following pages have been tested by direct input:
-* Home
-* Menu
-* Make a booking
-* Where to find us
-* Reviews
+* Homepage
+* Signin
+* Signup
 * Profile
-* Manage bookings
-* Login/Register/Logout
-* 403/404/500 custom pages
+* Alltask
+* ConfirmDeleteDialog
+* EditTask Status/Module
+* Task/TaskCard/TaskCreateForm/TaskList 
 
 | Template | Validation Result |  Final validation
 |--------|-----------|---------|
 | index.html | no errors | pass|
-| menu.html | no errors | pass |
-| reviews.html | no errors | pass |
-| contact.html | no errors | pass
-| booking.html | no errors | pass
-| managebookings.html | no errors | pass ||
-| profile.html | no errors| pass
-| 404.html | no errors | pass |
-| 500.html | no errors | pass |
-| 403.html | no errors | pass |
-| signup.html | no errors | pass |
-| logout.html | no errors | pass |
-| login.html | no errors | pass |
+| Home.html | no errors | pass |
+| Signin.html | no errors | pass |
+| Signup.html | no errors | pass
+| Profile.html | no errors | pass
+| AllTask.html | no errors | pass ||
+| Confirmation Delete.html | no errors| pass
+| Edit.html | no errors | pass |
+| Task.html | no errors | pass |
+| TaskCreate.html | no errors | pass |
+| TaskList.html | no errors | pass |
+| Taskcard.html | no errors | pass |
+
 
 
 ### CSS
