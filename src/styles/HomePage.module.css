@@ -1,4 +1,7 @@
-
+.carouselImage {
+  height: 250px;
+  object-fit: cover;
+}
 
 /* Footer styling */
 .Footer {

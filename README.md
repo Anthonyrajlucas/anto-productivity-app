@@ -475,3 +475,77 @@ Lighthouse was used to test the performance, accessibility, best practices, and 
 
 
 
+### Forking the GitHub Repository
+
+We can make a copy of the original repository on our GitHub account to view or make changes too without affecting the original repository, this is known as forking. Forking in GitHub can be done via the following steps:
+
+1. Navigate to www.github.com and log in.
+2. Once logged in navigate to the desired [GitHub Repository](https://github.com/Anthonyrajlucas/anto-productivity-app) that you would like to fork.
+3. At the top right corner of the page click on the fork icon.
+4. There should now be a copy of your original repository in your GitHub account.
+
+Please note if you are not a member of an organization on GitHub then you will not be able to fork your repository.
+   
+### Clone a GitHub Repository
+
+You can make a local clone of a repository via the following steps: 
+
+1. Navigate to www.github.com and log in.
+2. Once logged in navigate to the desired [GitHub Repository](https://github.com/Anthonyrajlucas/anto-productivity-app) that you would like to clone.
+3. Locate the code button at the top, above the repository file structure.
+4. Select the preferred clone method from HTTPS. SSH or GitHub CLI then click the copy button to copy the URL to your clipboard.
+5. Open Git Bash
+6. Update the current working direction to the location in which you would like the clone directory to be created.
+7. `$ clone gh repo clone Anthonyrajlucas/anto-productivity-app`
+8. Now press enter and the local clone will be created at the desired local location
+
+##### Back to [top](#Anto-Productivity-App)
+
+
+## Credits
+
+### Tutorials
+- [Code Institute course and learning platform](https://codeinstitute.net/)
+- Real Python Django redirects tutorial - [The Ultimate Guide to Django Redirects](https://realpython.com/django-redirects/)
+- React-multi-select-component video by [Monsterlessons Academy](https://www.youtube.com/@MonsterlessonsAcademy) - [React Select Example | React Dropdown Menu - Fully Customizable](https://www.youtube.com/watch?v=3u_ulMvTYZI)
+- [W3Schools](https://www.w3schools.com/python/default.asp)
+
+
+### Code
+
+ Code from external sources were used as a basis and built on top of in this project, they are credited below:
+
+ - The basis of this project was inspired by the 'Moments' social media platform walk-through project with Code Institute. Using this a a user basis log in, profile creation, and posting to the API I have built my app and added extra functionality, such as creating task my invention task and assigning tasks to users.
+
+ The password criteria tooltip component was inspired by my mentor's previous student [aleksandracodes](https://github.com/aleksandracodes). The file for this component can be found [here](https://github.com/aleksandracodes/ci_pp5_snapfood/blob/main/src/components/PasswordCriteria.js).
+
+  - Landing component was inspired by my mentor's previous student [aleksandracodes](https://github.com/aleksandracodes). The file for this component can be found [here](https://github.com/aleksandracodes/ci_pp5_snapfood/blob/main/src/components/Landing.js).
+
+### Literature
+
+The use of reference books were used throughout the creation of this project and are credited below:
+
+- React Key Concepts - Roy Derks, published by Packt Publishing
+
+### Misc
+
+The source of where I learned how to produce a GitHub fork and clone was from the following pages of the GitHub Documentation. Although I did not use a fork or clone in this project it is something I hope to implement to future projects now I have the knowledge to do so.
+
+- https://docs.github.com/en/get-started/quickstart/fork-a-repo
+- https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+
+Images such as no results found image used in this site were created by myself using Affinity Designer.
+
+
+## Acknowledgements
+
+I would like to also thank the following:
+- My wife and family for their support and feedback whilst doing this project
+- Code Institute tutor john support who helped with the many issues I had during this project.
+- Code Institute Slack Community for being an invaluable knowledge base.
+- My Code Institute mentor Derek McAuley for his guidance through this project.
+
+
+[Back to Top](#Anto-Productivity-App)
+
+

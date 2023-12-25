@@ -112,10 +112,12 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://res.cloudinary.com/df8bd97ok/image/upload/t_Banner 16:9/v1702225417/signin-desktop_dfam4r.svg"}
-        />
+       <Image
+       className={`${appStyles.FillerImage}`}
+       src="https://res.cloudinary.com/df8bd97ok/image/upload/f_auto,q_auto/v1702225417/signin-desktop_dfam4r.svg"
+       alt="Signin image"
+       />
+
       </Col>
     </Row>
   );

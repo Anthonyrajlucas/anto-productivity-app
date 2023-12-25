@@ -19,11 +19,10 @@ function ControlledCarousel() {
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className={`d-block w-100 ${styles.carouselImage}`}
           src="https://res.cloudinary.com/df8bd97ok/image/upload/ar_16:9,c_fill,g_auto,h_200,q_70,w_400/v1701808579/landing_1_hsqtnw.jpg"
           alt="First slide"
-          style={{ height: '250px', objectFit: 'cover' }}
-          
+          loading="lazy"          
         />
         <Carousel.Caption className="custom-caption">
           <h3>Work</h3>
@@ -32,10 +31,10 @@ function ControlledCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className={`d-block w-100 ${styles.carouselImage}`}
           src="https://res.cloudinary.com/df8bd97ok/image/upload/t_Banner 16:9/v1703325843/64f043b633c0fb9f9feb577e_best-ai-productivity-tools_teszni.jpg" 
-          alt="Second slide"
-          style={{ height: '250px', objectFit: 'cover' }}
+          alt="Second slide" 
+          loading="lazy" 
         />
         <Carousel.Caption className="custom-caption">
           <h3>Study</h3>
@@ -44,10 +43,11 @@ function ControlledCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+           className={`d-block w-100 ${styles.carouselImage}`}
           src="https://res.cloudinary.com/df8bd97ok/image/upload/c_scale,h_235,w_600/v1701808769/landing_2_woi6xe.png"
           alt="Third slide"
-          style={{ height: '250px', objectFit: 'cover' }}
+          loading="lazy" 
+          
         />
         <Carousel.Caption className="custom-caption">
           <h3>Fitness</h3>

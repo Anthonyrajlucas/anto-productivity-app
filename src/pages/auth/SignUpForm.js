@@ -128,8 +128,9 @@ const SignUpForm = () => {
         <Image
           className={`${appStyles.FillerImage}`}
           src={
-            "https://res.cloudinary.com/df8bd97ok/image/upload/v1701464020/SignUp-Facebook-Default_j7oxdf.jpg"
+            "https://res.cloudinary.com/df8bd97ok/image/upload/c_scale,h_150,w_300/v1702225417/signin-desktop_dfam4r.svg"
           }
+          alt="Signup image"
         />
        </Col>
     </Row>
