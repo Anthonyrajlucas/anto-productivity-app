@@ -539,7 +539,7 @@ Images such as no results found image used in this site were created by myself u
 ## Acknowledgements
 
 I would like to also thank the following:
-- My wife and family for their support and feedback whilst doing this project
+- My wife support and feedback whilst doing this project
 - Code Institute tutor john support who helped with the many issues I had during this project.
 - Code Institute Slack Community for being an invaluable knowledge base.
 - My Code Institute mentor Derek McAuley for his guidance through this project.
