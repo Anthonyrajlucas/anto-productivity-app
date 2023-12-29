@@ -324,7 +324,7 @@ The html code of the website was validated using [W3 Markup Validator](https://v
 For pages that require authentication I used "validate by direct input" method with source code.<br>
 At the time of deployment the validation have the following outcome:<br><br>
 
-![html-validation](docs/img/validations/pp4_html_validation.png)
+![html-validation](documentation/validation/html-validator.jpg)
 
 The following pages have been tested by direct input:
 * Homepage
@@ -412,7 +412,7 @@ Lighthouse was used to test the performance, accessibility, best practices, and 
 <summary>Desktop</summary>
 
 * Home page<br>
-![lighthouse-home](docs/img/validations/lighthouse_home_desktop.png)<br>
+![lighthouse-home](documentation/validation/lighthouse_home.png)<br>
 
 * Menu page<br>
 ![lighthouse-menu](docs/img/validations/lighthouse_menu_desktop.png)<br>
