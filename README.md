@@ -3,7 +3,7 @@ Developer: Anthony Raj
 
 ![Mockup image](documentation/readme/am-i-responsive.jpg)
 
-[View live website]()
+[View live website](https://anto-productivity-frontend-app-5ba2c230fa37.herokuapp.com/)
 
 ## Table of Contents
   1. [About](#about)
