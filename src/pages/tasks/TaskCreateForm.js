@@ -95,9 +95,8 @@ function TaskCreateForm() {
     const { data } = await axios.post("/tasks/", formData);
     history.push(`/tasks/${data.id}`);
     setShowModal(true);
-    console.log("New Task Created:", data);
   } catch (error) {
-    console.log(error);
+//     console.log(error);
   } 
   };
 

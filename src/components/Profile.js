@@ -22,7 +22,7 @@ function Profile() {
           const { data } = await axiosReq.get(`/profiles/${currentUser.profile_id}/`);
           setProfileData({ name: data.name, image: data.image });
         } catch (err) {
-          console.log(err);
+//           console.log(err);
           history.push("/");
         }
       } else {
@@ -57,7 +57,7 @@ function Profile() {
       }));
       setShowModal(true);
     } catch (err) {
-      console.log(err);
+//       console.log(err);
       setErrors(err.response?.data);
     }
   };

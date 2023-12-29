@@ -98,10 +98,9 @@ function TaskList( { message, filter = "" }) {
 
   const handleSaveEdit = async (editedTask) => {
     try {
-      console.log("Editing task:", editedTask);
+
 
       const response = await axios.put(`/tasks/${editedTask.id}/`, editedTask);
-      console.log("Task Updated:", response.data);
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task.id === editedTask.id ? response.data : task
@@ -128,9 +127,7 @@ function TaskList( { message, filter = "" }) {
 
   const handleConfirmDelete = async (deleteTask) => {
     try {
-      console.log("Deleting task:", deleteTask);
       const response = await axios.delete(`/tasks/${deleteTask.id}`, deleteTask);
-      console.log("Task Deleted:", response.data);
   
       setTasks((prevTasks) =>
         prevTasks.map((task) =>

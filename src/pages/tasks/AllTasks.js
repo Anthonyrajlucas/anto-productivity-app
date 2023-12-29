@@ -102,7 +102,7 @@ function AllTasks( { message, filter = "" }) {
 
   const handleSaveEdit = async (editedTask) => {
     try {
-      console.log("Editing task status:", editedTask);
+//       console.log("Editing task status:", editedTask);
       const updatedTaskStatus = {
         owner: editedTask.owner,  
         state: editedTask.state,      
