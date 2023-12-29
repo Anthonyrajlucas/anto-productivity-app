@@ -53,7 +53,7 @@ function TaskList( { message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query , selectedCategory ]);
+  }, [filter, query , selectedCategory , currentUser.profile_id]);
 
   useEffect(() => {
     const fetchData = async () => {
