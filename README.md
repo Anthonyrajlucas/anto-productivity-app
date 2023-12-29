@@ -433,35 +433,14 @@ Lighthouse was used to test the performance, accessibility, best practices, and 
 <summary>Mobile</summary>
 
 * Home page<br>
-![lighthouse-home](docs/img/validations/lighthouse_home_mobile.png)<br>
+![lighthouse-home](documentation/validation/mobile_lighthouse_home_page%20.jpg)<br>
 
-* Menu page<br>
-![lighthouse-menu](docs/img/validations/lighthouse_home_mobile.png)<br>
+* Signin Page<br>
+![lighthouse-menu](documentation/validation/mobile_lighthouse_signin_page.jpg)<br>
 
-* Contact page<br>
-![lighthouse-contact](docs/img/validations/lighthouse_contact_mobile.png)<br>
-
-* Reviews page<br>
-![lighthouse-reviews](docs/img/validations/lighthouse_reviews_mobile.png)<br>
-
-* Bookings page<br>
-![lighthouse-bookings](docs/img/validations/lighthouse_createbooking_mobile.png)<br>
-
-* Manage Bookings page<br>
-![lighthouse-manage-bookings](docs/img/validations/lighthouse_managebooking_mobile.png)<br>
-
-* Profile page<br>
-![lighthouse-profile](docs/img/validations/lighthouse_profile-desktop.png)<br>
-
-* Register page<br>
-![lighthouse-register](docs/img/validations/lighthouse_register_mobile.png)<br>
-
-* Login page<br>
-![lighthouse-profile](docs/img/validations/lighthouse_login_mobile.png)<br>
+* Signup Page<br>
+![lighthouse-contact](documentation/validation/mobile_lighthouse_signup_page%20.jpg)<br>
 </details>
-
-
-
 
 ### Forking the GitHub Repository
 
