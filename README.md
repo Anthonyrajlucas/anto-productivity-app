@@ -161,24 +161,12 @@ Balsamiq was used to create wireframes of the site pages
 
 <details>
 <summary>Wireframes</summary>
-<img src="docs/wireframes/wireframe-home-not-signed-in.png">
-<img src="docs/wireframes/wireframe-home-signed-in.png">
-<img src="docs/wireframes/wireframe-sign-up.png">
-<img src="docs/wireframes/wireframe-log-in.png">
-<img src="docs/wireframes/wireframe-task-list.png">
-<img src="docs/wireframes/wireframe-task-detail.png">
-<img src="docs/wireframes/wireframe-watched-list.png">
-<img src="docs/wireframes/wireframe-pack-list.png">
-<img src="docs/wireframes/wireframe-pack-detail.png">
-<img src="docs/wireframes/wireframe-create-task.png">
-<img src="docs/wireframes/wireframe-edit-task.png">
-<img src="docs/wireframes/wireframe-create-pack.png">
-<img src="docs/wireframes/wireframe-edit-pack.png">
-<img src="docs/wireframes/wireframe-profile.png">
-<img src="docs/wireframes/wireframe-edit-profile.png">
-<img src="docs/wireframes/wireframe-users.png">
-<img src="docs/wireframes/wireframe-contact.png">
-<img src="docs/wireframes/wireframe-update-password.png">
+<img src="documentation/wireframes/homepage-not-signed-in.jpg">
+<img src="documentation/wireframes/homepage-after-signed-in.jpg">
+<img src="documentation/wireframes/my-invented-task.jpg">
+<img src="documentation/wireframes/my-duty-task.jpg">
+<img src="documentation/wireframes/my-profile.jpg">
+<img src="documentation/wireframes/phone-app.jpg">
 
 </details>
 
