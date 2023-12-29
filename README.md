@@ -414,11 +414,11 @@ Lighthouse was used to test the performance, accessibility, best practices, and 
 * Home page<br>
 ![lighthouse-home](documentation/validation/lighthouse_home.png)<br>
 
-* Menu page<br>
-![lighthouse-menu](docs/img/validations/lighthouse_menu_desktop.png)<br>
+* SignIn Page<br>
+![lighthouse-menu](documentation/validation/lighthouse_signin_page.jpg)<br>
 
 * Contact page<br>
-![lighthouse-contact](docs/img/validations/lighthouse-contact_desktop.png)<br>
+![lighthouse-contact](documentation/validation/lighthouse_signup_page.jpg)<br>
 
 * Reviews page<br>
 ![lighthouse-reviews](docs/img/validations/reviews_lighthouse_desktop.png)<br>
@@ -498,7 +498,7 @@ You can make a local clone of a repository via the following steps:
 7. `$ clone gh repo clone Anthonyrajlucas/anto-productivity-app`
 8. Now press enter and the local clone will be created at the desired local location
 
-##### Back to [top](#Anto-Productivity-App)
+##### [Back to top](#Anto-Productivity-App)
 
 
 ## Credits
