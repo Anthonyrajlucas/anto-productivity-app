@@ -124,6 +124,12 @@ function AllTasks( { message, filter = "" }) {
     }
   };
 
+  const isTaskCompleted = (task,dropdownData) => {
+    const taskStateName = getDropdownTaskState(task.id, dropdownData.taskstatus);
+    return taskStateName === 'Completed'; 
+  };
+  
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -180,9 +186,9 @@ function AllTasks( { message, filter = "" }) {
         task && task.id ? (
           <Card>
           <CardContent>
-           <Typography variant="h6" className={task.is_overdue ? TaskListStyle.overdueTask : ''}>
-           {task.title}
-           </Typography>
+            <Typography variant="h6" className={`${isTaskCompleted(task, dropdownData) ? 'Completed' : ''} ${task.is_overdue && !isTaskCompleted(task, dropdownData) ? TaskListStyle.overdueTask : ''}`}>
+                {task.title}
+            </Typography>
             <Typography variant="body1">Description: {task.description}</Typography>
             <Typography variant="body2">Due Date: {task.due_date}</Typography>
             <Typography variant="body2">Priority: {getDropdownItemName(task.priority, dropdownData.priorities)}</Typography>

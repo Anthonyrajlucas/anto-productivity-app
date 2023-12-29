@@ -20,7 +20,7 @@ const TaskCard = ({ task, isOwner, onEditClick, onDeleteClick , priorities,state
     }
     return 'Not updated';
   };
-
+  
 
   return (
     <Card>
