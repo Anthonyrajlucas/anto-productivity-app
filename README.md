@@ -5,7 +5,6 @@ Developer: Anthony Raj
 
 [View live website]()
 
-
 ## Table of Contents
   1. [About](#about)
   2. [Project Goals](#project-goals)
@@ -172,16 +171,6 @@ Balsamiq was used to create wireframes of the site pages
 
 ##### Back to [top](#Anto-Productivity-App)
 
-
-
-
-
-
-
-
-
-
-
 ## Technologies Used
 
 ### Coding Languages
@@ -263,9 +252,6 @@ I used React for this application for several reasons:
 - Reusability of components – Components can be created and re-used throughout the app with no need to rewrite code for the same features.
 
 There were various components created and reused across this application.
-
-
-
 
 
 ### Home page
