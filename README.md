@@ -1,7 +1,7 @@
 # Anto-Productivity-App
 Developer: Anthony Raj 
 
-![Mockup image]()
+![Mockup image](documentation/readme/am-i-responsive.jpg)
 
 [View live website]()
 
