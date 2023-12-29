@@ -92,45 +92,29 @@ The key functionality aspects:
 
 ### User Stories
 
-1. As a new user, I can register an account with Anto-Productivity-App It so that I can become a member and use the app as intended.
+1. As a new user, I can register an account with the Anto-Productivity App so that I can become a member and use the app as intended.
 2. As a user, I can use the navigation bar so that I can seamlessly navigate around the app.
-3. As a user, I can see visual indicators for example of having my invention task in that i can choose work, study and fitness / If i wish to assign to other user 
-4. As a user, I can watch and unwatch tasks so that I can keep up to date with that particular task via a filtered list.
-5. As a user, I can view a list of my watched tasks so that I can focus on content I wish to view.
-6. As a user, I can use the search bar on the Task list section so that I can find particular tasks easier.
-7. As a user, I can delete my tasks so that I can permanently remove tasks I do not wish to keep.
-8. As a user, I can edit my tasks so that I can correct spelling mistakes I may have entered into the task information fields.
-9. As a user, I can view task comments so that I can obtain more information on the task in question.
-10. As a user, I can comment on other tasks so that I can interact with other users.
-11. As a user, I can edit or delete my comment on a task incase of input error.
-12. As a user, I can manage my tasks so that I can add, edit or delete tasks as needed.
-13. As a user, I can request a password so that I can log back into my account if I have forgotten my password.
-14. As a user, I can log in so that I can access my account, view my profile, tasks and other user's tasks.
-15. As a user, I can log out so that other users using the same device cannot access my account.
-16. As a user, I can have a profile page so that I and other users can view my list of tasks, packs and assigned tasks.
-17. As a user, I can update my profile so that my profile can stay up to date with my latest information.
-18. As a user, I can add a profile picture so that other members can easily recognize my tasks or comments.
-19. As a user, I can view the Home Page so that I can understand what the website is about, create an account or log in.
-20. As a user, I can display basic info on my profile page so that other members can learn more about me.
-21. As a user, I can search for tasks via a task list or search bar so that I can find specific tasks.
-22. As a user, I can fill in a contact form so that I can enquire about issues I may have regarding the app.
-23. As a user, I can receive feedback so that I can confirm whether the contact form submission was successful or not.
-24. As a user, I can scroll through the latest tasks on the app so that I can find new tasks to complete.
-25. As a user, I can browse a list of user accounts so that I can view that particular account.
-26. As a user, I can create tasks so that I can partake in the main purpose of the site.
-27. As a user, I can create packs so that I can group tasks together.
-28. As a user, I can delete my packs so that I can permanently remove packs I do not wish to keep.
-29. As a user, I can edit my packs so that I can correct spelling mistakes or I may have entered into the pack information fields.
+3. As a user, I can create my tasks so that I can add task details.
+4. As a user, I can delete my tasks so that I can permanently remove tasks I do not wish to keep.
+5. As a user, I can edit my tasks so that I can change the task which I created.
+6. As a user, I can log out so that other users using the same device cannot access my account.
+7. As a user, I can have a profile page so that I and other users can view my list of tasks assigned to others.
+8. As a user, I can display and edit info on my profile page so that I can upload my image and update my name.
+9. As a user, I can search for tasks via a task list or search bar so that I can find specific tasks.
+10. As a user, I can filter tasks via a task list and filter via all the categories.
+11. As a user, I can log in so that I can access my account, and view my profile, tasks, and other users' tasks.
+12. As a user, I want to update the status through the duty tasks on the app so that I can update the task.
+13. As a user, I can log in so that I can access my account, and view my profile, tasks, and other users' tasks.
+14. As a user, I can have a profile page so that I can view my profile.
+15. As a user, I can find, delete, and edit my invented task so that I can maintain with category of study, work, etc.
 
 ### Site Owner Stories
 
-30. As the site owner, I would want to validate users' data entries on sign up so that users can create a log in which meets the requirements.
-31. As the site owner, I would want to ensure only logged in users can post from their account and edit their profile so that data privacy is ensured.
-32. As the site owner, I would want to have the ability to remove tasks and task comments so that I can keep the app clean and friendly.
-33. As the site owner, I would want the site to be fully responsive so that users can use it across multiple devices and create a good user experience.
-34. As the site owner, I would want to use the app search function so that I can search for particular tasks by their title.
-35. As the site owner, I would want a 404 error page so that users do not have to use the back navigation button if an error occurs.
- 
+16. As the site owner, I would want to validate users' data entries on sign-up so that users can create a log-in that meets the requirements.
+17. As the site owner, I would want to have the ability to remove tasks so that I can keep the app clean and friendly.
+18. As the site owner, I would want the site to be fully responsive so that users can use it across multiple devices and create a good user experience.
+19. As the site owner, I would want to use the app search function so that I can search for particular tasks by their title.
+20. As the site owner, I would want a 404 error page so that users do not have to use the back navigation button if an error occurs.
 
 
 ##### Back to [top](#Anto-Productivity-App)
