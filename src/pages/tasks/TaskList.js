@@ -38,9 +38,10 @@ function TaskList( { message, filter = "" }) {
         let queryURL = `/tasks/?${filter}search=${query}`;
         if (selectedCategory) {
           queryURL += `&category=${selectedCategory}`; 
-        }
+        }        
         const { data } = await axios.get(queryURL);
-        setTasks(data.results || []);
+        const userTasks = data.results ? data.results.filter(task => task.profile_id === currentUser.profile_id) : [];        
+        setTasks(userTasks);
       } catch (err) {
        console.error("Axios Error", err);
        console.error("Response Data", err.response?.data);
