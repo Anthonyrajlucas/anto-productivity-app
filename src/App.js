@@ -10,6 +10,7 @@ import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import HomePage from "./pages/home/HomePage";
 import AllTasks from "./pages/tasks/AllTasks"
 import Profile from "./components/Profile"; 
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -24,8 +25,10 @@ function App() {
         <Route exact path="/tasksCreate" render={() => <TaskCreateForm/>} />
         <Route exact path="/alltasks" render={() => <AllTasks/>} />
         <Route exact path="/profile" render={() => <Profile/>} />
-        <Route render={() => <p>Page not found!</p>} />
-        <Route render={() => <p>Page not found!</p>} />
+        <Route render={() => <PageNotFound />} />
+            <Route path="*">
+            <PageNotFound />
+          </Route>
       </Switch>
     </Container>
   </div>
