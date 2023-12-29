@@ -417,26 +417,15 @@ Lighthouse was used to test the performance, accessibility, best practices, and 
 * SignIn Page<br>
 ![lighthouse-menu](documentation/validation/lighthouse_signin_page.jpg)<br>
 
-* Contact page<br>
+* SignUp Page<br>
 ![lighthouse-contact](documentation/validation/lighthouse_signup_page.jpg)<br>
 
-* Reviews page<br>
-![lighthouse-reviews](docs/img/validations/reviews_lighthouse_desktop.png)<br>
+* My Duty Task<br>
+![lighthouse-reviews](documentation/validation/lighthouse_my_duty_task.jpg)<br>
 
-* Bookings page<br>
-![lighthouse-bookings](docs/img/validations/lighthouse_createbooking_desktop.png)<br>
+* Profile Page<br>
+![lighthouse-bookings](documentation/validation/lighthouse_profile_page.jpg)<br>
 
-* Manage Bookings page<br>
-![lighthouse-manage-bookings](docs/img/validations/lighthouse_managebooking_desktop.png)<br>
-
-* Profile page<br>
-![lighthouse-profile](docs/img/validations/lighthouse_profile-desktop.png)<br>
-
-* Register page<br>
-![lighthouse-register](docs/img/validations/lighthouse_register_desktop.png)<br>
-
-* Login page<br>
-![lighthouse-profile](docs/img/validations/lighthouse_login_desktop.png)<br>
 
 </details>
 
